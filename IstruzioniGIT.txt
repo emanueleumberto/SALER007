@@ -11,8 +11,14 @@ git branch -M main
 git remote add origin https://github.com/vostroaccount/vostrarepo.git
 git push -u origin main
 
-#Gestione di modifiche su GIT
+# Clonare una repository remota in locale
+git clone https://github.com/vostroaccount/vostrarepo.git
+
+# Caricare modifiche locali su GIThub
 git status
 git add .
 git commit -m "messaggio"
 git push
+
+# Scaricare modifiche fatte da altri in locale
+# git pull
