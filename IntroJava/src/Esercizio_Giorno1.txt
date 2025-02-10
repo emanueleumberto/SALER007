@@ -1,0 +1,8 @@
+Esercizio #1
+Implementare i seguenti metodi:
+-   somma       -> Chiede ad un utente due numeri, li somma e ne restituisce il risultato
+-   moltiplica  -> Chiede ad un utente due numeri, li moltiplica e ne restituisce il risultato
+-   sottrai     -> Chiede ad un utente due numeri, li sottrae e ne restituisce il risultato
+-   dividi      -> Chiede ad un utente due numeri, li divide e ne restituisce il risultato
+-   concatena   -> Prende in ingresso 4 valori (somma, moltiplica, sotttrai, dividi) e stampa nel terminale
+                    una stringa con tutti i valori calcolati dai metodi precedenti
