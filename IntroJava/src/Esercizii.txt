@@ -21,3 +21,18 @@ SWITCH
                             la data completa nel seguente formato (11 - Febbraio - 2025)
 -   stampaStagione      -> passare un oggetto di tipo LocalDate come paramentro del metodo e stampare a video
                             la stagione corrispondente
+
+WHILE
+-   inserisciStringa    -> Scrivere un metodo che chiede di inserire una stringa e ne controlla la lunghezza.
+                            deve ripetere la richiesta di inserimento della stringa fin quando la lunghezza
+                            non è almeno di 5 caratteri. Infine si deve ritornare la stringa inserita.
+-   suddividiStringa    -> Scrivere un metodo che riceve come paramentro una stringa, si deve suddividere
+                            in caratteri separati da una virgola e stampare a video.  ("s,t,r,i,n,g,a")
+-   popolaArray         -> Scrivere un metodo che chiede di inserire la lunghezza di un array, in base al
+                            valore fornito dall'utente creare un array di Stringhe e popolarlo con il metodo
+                            inserisciStringa creato in precedenza. Infine stampare le stringhe contenute
+                            nell'array tramite il metodo suddividiStringa.
+
+FOR
+-   contoAllRovscia     -> Scrivere un metodo che chiede di inserire un numero e stampi il conto alla rovescia
+                            da quel numero fino a zero.
