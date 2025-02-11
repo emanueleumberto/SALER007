@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Esercizio2 {
@@ -28,6 +29,17 @@ public class Esercizio2 {
         // Esercizio 3.2 SWITCH
         //String s = stampaStagione(now);
         //System.out.println("Oggi è il giorno: " + d + " (" + s + ")");
+
+        // Esercizio 4.1 WHILE
+        //String testo = inserisciStringa();
+        //System.out.println(testo);
+        // Esercizio 4.2 WHILE
+        //suddividiStringa("Ciao");
+
+        // Esercizio 5.1 FOR
+        //contoAllRovescia();
+        // Esercizio 5.2 FOR
+        popolaArray();
     }
 
     // Esercizio 1 IF-ELSE
@@ -121,4 +133,54 @@ public class Esercizio2 {
         return stagione;
     }
 
+    // Esercizio 4.1 WHILE
+    public static String inserisciStringa() {
+        String str;
+        do {
+            System.out.print("Inserisci una stringa di almeno 5 caratteri: ");
+            str = sc.nextLine();
+        } while (str.length() < 5);
+        return str;
+    }
+
+    // Esercizio 4.2 WHILE
+    public static void suddividiStringa(String str) {
+        //String[] strSplit =  str.split("");
+        int i = 0;
+        String testo = "";
+        while(i<str.length()) {
+            if(i == str.length()-1) {
+                testo += str.charAt(i);
+                // testo += strSplit[i];
+            } else {
+                testo += str.charAt(i) + ",";
+                // testo += strSplit[i] + ",";
+            }
+            i++;
+        }
+        System.out.println(testo);
+    }
+
+    // Esercizio 5.1 FOR
+    public static void contoAllRovescia() {
+        System.out.print("Inserisci un numero: ");
+        int num = Integer.parseInt(sc.nextLine());
+        for(int i=num; i>=0; i--) {
+            System.out.println(i + "/" + num);
+        }
+    }
+
+    // Esercizio 5.2 FOR
+    public static void popolaArray() {
+        System.out.print("Inserisci la lunghezza di un array: ");
+        int pos = Integer.parseInt(sc.nextLine());
+        String[] arrStr = new String[pos];
+        for(int i=0; i< arrStr.length; i++) {
+            arrStr[i] = inserisciStringa();
+        }
+        System.out.println(Arrays.toString(arrStr));
+        for(int i=0; i< arrStr.length; i++) {
+            suddividiStringa(arrStr[i]);
+        }
+    }
 }
