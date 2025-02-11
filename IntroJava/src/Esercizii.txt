@@ -1,0 +1,23 @@
+Esercizio #1
+Implementare i seguenti metodi:
+-   somma       -> Chiede ad un utente due numeri, li somma e ne restituisce il risultato
+-   moltiplica  -> Chiede ad un utente due numeri, li moltiplica e ne restituisce il risultato
+-   sottrai     -> Chiede ad un utente due numeri, li sottrae e ne restituisce il risultato
+-   dividi      -> Chiede ad un utente due numeri, li divide e ne restituisce il risultato
+-   concatena   -> Prende in ingresso 4 valori (somma, moltiplica, sotttrai, dividi) e stampa nel terminale
+                    una stringa con tutti i valori calcolati dai metodi precedenti
+
+Esercizio #2
+Scrivere i seguenti metodi:
+IF ELSE
+-   stringaPariDispari  -> Chiede ad un utente una stringa, ritorna true se il numero dei caratteri
+                            è pari altrimenti deve ritornare false
+-   annoBisestile      -> Chiede ad un utente un anno, ritorna true se è un anno bisestile
+                            altrimenti deve ritornare false
+                            (Per essere un anno bisestile deve essere divisibile per 4,
+                            qualora sia divisibile per 100 deve essere anche divisibile per 400)
+SWITCH
+-   stampaMese          -> passare un oggetto di tipo LocalDate come paramentro del metodo e stampare a video
+                            la data completa nel seguente formato (11 - Febbraio - 2025)
+-   stampaStagione      -> passare un oggetto di tipo LocalDate come paramentro del metodo e stampare a video
+                            la stagione corrispondente
