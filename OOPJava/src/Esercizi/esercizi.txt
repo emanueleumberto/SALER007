@@ -1,0 +1,20 @@
+Esercizio #1
+Creare una classe Rettangolo che permetta di rappresentare dei rettangoli.
+Per ogni rettangolo deve essere possibile specificare altezza e larghezza
+e devono essere realizzati i metodi per calcolare perimetro,area e stampa.
+Il metodo stampa deve stampare il valore di larghezza, altezza, perimetro e area
+Creare un main in cui istanziare 2 oggetti di tipo rettangolo con valori diversi.
+Calcoare e stampare il perimetro e l'area di ogni rettangolo tramite il metodo stampa.
+
+Esercizio #2
+Scrivere un’applicazione che simula il funzionamento di un operatore di telefonia cellulare.
+Si devono quindi rappresentare i dati relativi ad una carta SIM, ed in particolare:
+- il numero di telefono
+- il credito disponibile in euro
+- la lista delle ultime 5 chiamate effettuate
+Per ciascuna Chiamata deve essere rappresentata la durata in minuti e il numero chiamato
+La classe SIM dovrà fornire le seguenti funzionalità:
+- un costruttore che crea una SIM con numero di telefono passato come parametro, credito a 0 e lista delle
+   chiamate vuota
+una funzione per la stampa dei dati della SIM
+Scrivere un main che crei una istanza di SIM e ne stampi i dati.

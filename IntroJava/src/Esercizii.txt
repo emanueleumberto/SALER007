@@ -44,3 +44,13 @@ e devono essere realizzati i metodi per calcolare perimetro,area e stampa.
 Il metodo stampa deve stampare il valore di larghezza, altezzam perimetro e area
 Creare un main in cui istanziare 2 oggetti di tipo rettangolo con lavori diversi.
 Calcoare e stampare il perimetro e l'area di ogni rettangolo tramite il metodo stampa.
+
+
+
+
+
+
+
+
+
+
