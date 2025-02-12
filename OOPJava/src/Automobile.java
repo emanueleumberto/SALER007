@@ -7,14 +7,16 @@ public class Automobile {
     public String colore;
     public boolean motoreAcceso;
     public String targa;
+    public CategoriaAutomobile categoria;
 
     // metodo costruttore
-    public Automobile(String marca, String modello, int cilindrata, String colore) {
+    public Automobile(String marca, String modello, int cilindrata, String colore, CategoriaAutomobile categoria) {
         this.marca = marca;
         this.modello = modello;
         this.cilindrata = cilindrata;
         this.colore = colore;
         this.motoreAcceso = false;
+        this.categoria = categoria;
     }
 
     // metodi di istanza
@@ -30,6 +32,7 @@ public class Automobile {
 
     public void info() {
         System.out.println("Automobile: " + this.marca + " " + this.modello);
+        System.out.println("Categoira: " + this.categoria);
         System.out.println("Cilindrata: " + this.cilindrata + "cc");
         System.out.println("Colore: " + this.colore);
         System.out.println("Targa: " + this.targa);

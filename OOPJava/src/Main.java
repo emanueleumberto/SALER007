@@ -1,4 +1,4 @@
-import Esercizi.Rettangolo;
+import Esercizi.Es1_Rettangolo.Rettangolo;
 
 public class Main {
 
@@ -7,7 +7,7 @@ public class Main {
         // Una classe in java è un raggruppamento concettuale di oggetti
         // che hanno caratteristiche e comportamenti simili
 
-        Automobile a1 = new Automobile("Fiat", "500L", 1200, "Bianco");
+        Automobile a1 = new Automobile("Fiat", "500L", 1200, "Bianco", CategoriaAutomobile.SUV);
 //        Automobile a1 = new Automobile();
 //        a1.marca = "Fiat";
 //        a1.modello = "500L";
@@ -19,7 +19,7 @@ public class Main {
         System.out.println(a1);
         System.out.println("*********************************************");
 
-        Automobile a2 = new Automobile("Ford", "Fiesta", 1500, "Nero");
+        Automobile a2 = new Automobile("Ford", "Fiesta", 1500, "Nero", CategoriaAutomobile.UTILITARIA);
 //        a2.marca = "Ford";
 //        a2.modello = "Fiesta";
 //        a2.cilindrata = 1500;
@@ -49,6 +49,15 @@ public class Main {
 //        r2.altezza = 150;
 //        r2.larghezza = 80;
 //        r2.stampaRettangolo();
+
+
+        // Incapsulamento OOP (Information Hiding)
+        // public | private | protected | default o package
+        Animal an1 = new Animal("Bobby", 2, "Dog", "--");
+        an1.name = ""; // public
+        an1.age = 0; // protected
+        //an1.type = ""; // private
+        an1.category = ""; // package
 
     }
 

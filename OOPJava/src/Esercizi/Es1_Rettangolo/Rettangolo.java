@@ -1,4 +1,4 @@
-package Esercizi;
+package Esercizi.Es1_Rettangolo;
 
 public class Rettangolo {
 
