@@ -16,5 +16,8 @@ Per ciascuna Chiamata deve essere rappresentata la durata in minuti e il numero 
 La classe SIM dovrà fornire le seguenti funzionalità:
 - un costruttore che crea una SIM con numero di telefono passato come parametro, credito a 0 e lista delle
    chiamate vuota
-una funzione per la stampa dei dati della SIM
-Scrivere un main che crei una istanza di SIM e ne stampi i dati.
+- un metodo per la stampa dei dati della SIM
+- un metodo per effettuare una chiamata (solo se si ha credito)
+- un metodo per ricaricare il credito
+
+Scrivere un main che crei una istanza di SIM, ne stampi i dati e simuli il funzionamento.
