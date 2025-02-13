@@ -51,6 +51,16 @@ public class Main {
 //        r2.stampaRettangolo();
 
 
+        // I 4 pilastri fondamentali dei linguaggi OOP
+        // -> Incapsulamento
+        //      Ci permette di nasconere dettagli implementativi (membri definiti private) da una classe.
+        // -> Ereditarietà
+        //      Ci permette di ereditare in una classe figlia tutti i mebri della classe padre
+        // -> Astrazione
+        //      Ci permette di astrarre oggi troppo generici
+        // -> Polimorfismo
+        //      Ci permette di definire classe e oggetti che possono avere molteplici tipi
+
         // Incapsulamento OOP (Information Hiding)
         // public | private | protected | default o package
         Animal an1 = new Animal("Bobby", 2, "Dog", "--");

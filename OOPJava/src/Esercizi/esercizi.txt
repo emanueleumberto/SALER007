@@ -21,3 +21,29 @@ La classe SIM dovrà fornire le seguenti funzionalità:
 - un metodo per ricaricare il credito
 
 Scrivere un main che crei una istanza di SIM, ne stampi i dati e simuli il funzionamento.
+
+
+Esercizio #3
+Scrivere la classe Dipendente che ha i seguenti attributi:
+- matricola - identificativo univoco del dipendente
+- nomeCompleto - Stringa
+- stipendioBase - numero decimale
+- stipendio - numero decimale con stipendio base mensile calcolato per il dipendente
+- Dipartimento - Valori possibili [PRODUZIONE, AMMINISTRAZIONE, VENDITE]
+
+Le proprietà  devono essere accessibili solo dalla classe Dipendente
+e deve essere possibile leggerle tramite opportuni metodi getter ma non modificarle,
+tranne la proprietà  Dipartimento  che può essere modificata da altre classi tramite setter.
+
+Estendere la classe Dipendente aggiungendo 3 ulteriori classi:
+-	DipendenteFullTime
+-	DipendentePartTime
+-	Dirigente
+
+Ogni classe concreta deve implementare il metodo calculateSalary() in modo appropriato
+per il tipo di dipendente specifico. Ad esempio, il salario di un dipendente a tempo pieno
+potrebbe essere calcolato come uno stipendio mensile fisso, mentre il salario
+di un dipendente part-time potrebbe essere calcolato in base alle ore lavorate
+
+Instanziare n Dipendenti nel main, creare un array con essi ed iterare su ognuno di essi
+stampando la matricola di ogni dipendente, il nome e il salario.
