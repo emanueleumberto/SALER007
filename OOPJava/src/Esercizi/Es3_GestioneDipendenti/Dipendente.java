@@ -37,6 +37,9 @@ public class Dipendente {
     public void setDipartimento(Dipartimento dipartimento) { this.dipartimento = dipartimento; }
 
     public String info() {
-        return this.matricola + " - " + this.nomeCompleto + " - " + this.dipartimento + " - " + this.stipendio;
+        return this.getMatricola() + " - "
+                + this.getNomeCompleto() + " - Dipartimento: "
+                + this.getDipartimento();
     }
+
 }
