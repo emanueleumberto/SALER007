@@ -24,16 +24,16 @@ Scrivere un main che crei una istanza di SIM, ne stampi i dati e simuli il funzi
 
 
 Esercizio #3
-Scrivere la classe Dipendente che ha i seguenti attributi:
+Scrivere la classe Dipendente con i seguenti attributi:
 - matricola - identificativo univoco del dipendente
-- nomeCompleto - Stringa
-- stipendioBase - numero decimale
-- stipendio - numero decimale con stipendio base mensile calcolato per il dipendente
+- nomeCompleto - Stringa composta da Nome e Cognome
+- stipendioBase - numero decimale da definire inizialmente tramite il costruttore
+- stipendio - numero decimale calcolato per il dipendente con stipendio base mensile
 - Dipartimento - Valori possibili [PRODUZIONE, AMMINISTRAZIONE, VENDITE]
 
 Le proprietà  devono essere accessibili solo dalla classe Dipendente
-e deve essere possibile leggerle tramite opportuni metodi getter ma non modificarle,
-tranne la proprietà  Dipartimento  che può essere modificata da altre classi tramite setter.
+ed essere disponibili in lettura tramite opportuni metodi getter ma non modificarli,
+tranne la proprietà  Dipartimento  che può essere modificata da altre classi tramite metodo setter.
 
 Estendere la classe Dipendente aggiungendo 3 ulteriori classi:
 -	DipendenteFullTime
