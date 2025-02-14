@@ -39,6 +39,7 @@ registraUtente(Utente utente) → Aggiunge un utente alla lista
 prestitoLibro(String idUtente, String ISBN) → Permette a un utente di prendere in prestito un libro (se disponibile)
 restituzioneLibro(String idUtente, String ISBN) → Permette a un utente di restituire un libro
 mostraCatalogo() → Stampa tutti i libri con la loro disponibilità
+mostraUtentiRegistrati() → Stampa tutti gli utenti registrati
 
 4. Classe Main
 Fare tutto tramite Scanner
