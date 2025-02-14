@@ -14,6 +14,9 @@ public class Libro {
         this.disponibile = true;
     }
 
+    public String getISBN() { return this.ISBN; }
+    public boolean isDisponibile() { return this.disponibile; }
+
     public String getDettagli(){
         /*String disp = "";
         if(disponibile == true) {
