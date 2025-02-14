@@ -1,0 +1,49 @@
+Traccia dell'esercizio: Sistema di Gestione Biblioteca
+Descrizione:
+Realizzare un sistema Java per gestire una biblioteca, in cui si possono registrare libri,
+gestire prestiti e restituire libri.
+ Il sistema deve sfruttare concetti avanzati di OOP e gestire controlli per evitare operazioni non consentite.
+Requisiti:
+
+1. Classe Libro
+Attributi privati:
+titolo (String)
+autore (String)
+ISBN (String, univoco per ogni libro)
+disponibile (boolean, inizialmente true)
+Costruttore con parametri
+Metodi:
+getDettagli() → Restituisce una stringa con i dettagli del libro
+prestareLibro() → Imposta disponibile = false se il libro è disponibile, altrimenti stampa libro non disponibile
+restituireLibro() → Imposta disponibile = true se il libro era in prestito, altrimenti stampa un Errore
+
+2. Classe Utente
+Attributi privati:
+nome (String)
+cognome (String)
+IDUtente (String, univoco per ogni utente)
+listaPrestiti (Array di Libro, massimo 3 libri per utente)
+Costruttore con parametri
+Metodi:
+prendereInPrestito(Libro libro) → Aggiunge il libro alla lista e aggiorna la disponibilità
+restituireLibro(Libro libro) → Rimuove il libro dalla lista e aggiorna la disponibilità
+mostraLibriInPrestito() → Stampa i libri presi in prestito dall'utente
+
+3. Classe Biblioteca
+Attributi privati:
+catalogoLibri (Array di oggetti Libro)
+utentiRegistrati (Array di oggetti Utente)
+Metodi:
+aggiungiLibro(Libro libro) → Aggiunge un libro al catalogo
+registraUtente(Utente utente) → Aggiunge un utente alla lista
+prestitoLibro(String idUtente, String ISBN) → Permette a un utente di prendere in prestito un libro (se disponibile)
+restituzioneLibro(String idUtente, String ISBN) → Permette a un utente di restituire un libro
+mostraCatalogo() → Stampa tutti i libri con la loro disponibilità
+
+4. Classe Main
+Fare tutto tramite Scanner
+Creare almeno 5 libri e 3 utenti
+Aggiungere i libri al catalogo della biblioteca
+Registrare gli utenti nel sistema
+Simulare alcuni prestiti e restituzioni di libri
+Stampare lo stato della biblioteca prima e dopo i prestiti
