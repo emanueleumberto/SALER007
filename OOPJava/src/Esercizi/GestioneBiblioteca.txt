@@ -31,12 +31,15 @@ mostraLibriInPrestito() → Stampa i libri presi in prestito dall'utente
 
 3. Classe Biblioteca
 Attributi privati:
+nome (String)
 catalogoLibri (Array di oggetti Libro)
 utentiRegistrati (Array di oggetti Utente)
+Costruttore con parametri
 Metodi:
-aggiungiLibro(Libro libro) → Aggiunge un libro al catalogo
-registraUtente(Utente utente) → Aggiunge un utente alla lista
-prestitoLibro(String idUtente, String ISBN) → Permette a un utente di prendere in prestito un libro (se disponibile)
+aggiungiLibro(Libro libro) → Aggiunge un libro al catalogo se non esiste
+registraUtente(Utente utente) → Aggiunge un utente alla lista se non esiste
+prestitoLibro(String idUtente, String ISBN) → Permette a un utente di prendere in prestito un libro
+                                                (se disponibile) e se non ha già presi 3
 restituzioneLibro(String idUtente, String ISBN) → Permette a un utente di restituire un libro
 mostraCatalogo() → Stampa tutti i libri con la loro disponibilità
 mostraUtentiRegistrati() → Stampa tutti gli utenti registrati

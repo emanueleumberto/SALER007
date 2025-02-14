@@ -16,6 +16,10 @@ public class Utente {
         this.listaPrestiti = new Libro[3];
     }
 
+    public String getIDUtente() { return this.IDUtente; }
+    public String getNome() { return this.nome; }
+    public String getCognome() { return this.cognome; }
+
     public void prendereInPrestito(Libro libro) {
         if(libro.isDisponibile()) {
             for(int i=0; i<this.listaPrestiti.length; i++) {
