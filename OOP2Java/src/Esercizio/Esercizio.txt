@@ -44,5 +44,5 @@ Eseguire un oggetto multimediale significa invocarne il metodo show() se è un'i
 o il metodo play() se è riproducibile.
 Organizzare opportunamente con classi astratte, interfacce e classi concrete il codice
 di un lettore multimediale che memorizza 5 elementi  in un array e
-poi chiede ripetutamente all'utente quale oggetto eseguire
+poi chiede ripetutamente all'utente quale oggetto eseguire tramite scanner
 (leggendo un intero da 1 a 5 oppure 0 per finire).
