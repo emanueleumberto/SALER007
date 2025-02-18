@@ -1,0 +1,21 @@
+Esercizio: Gestione delle Eccezioni in un Sistema di Prenotazioni
+Descrizione:
+    Devi sviluppare un semplice sistema di prenotazioni per un teatro.
+    Il sistema permette agli utenti di prenotare un posto specifico e tiene traccia dei posti già occupati.
+    Dovrai implementare una gestione delle eccezioni per evitare prenotazioni non valide.
+Classe Teatro
+    Contiene una proprietà di tipo String (nome);
+    Contiene un array di booleani (posti[]), in cui true indica che
+        il posto è occupato e false che è disponibile.
+    Ha un costruttore che chiede come paramentro il numeroPosti e
+        crea un array di lunghezza numeroPosti e inizializza tutti i posti come disponibili(false).
+    Metodo prenotaPosto(int numeroPosto), che:
+        Lancia un'eccezione se il numero del posto è fuori dall'intervallo valido.
+        Lancia un'eccezione se il posto è già prenotato.
+        Se la prenotazione è valida, segna il posto come occupato e conferma la prenotazione.
+Eccezioni Personalizzate:
+    PostoNonValidoException: viene lanciata quando il numero di posto non esiste.
+    PostoGiaOccupatoException: viene lanciata quando si tenta di prenotare un posto già occupato.
+Classe Main
+    Chiede all’utente tramite scanner di inserire un numero di posto da prenotare.
+    Gestisce le eccezioni e stampa messaggi adeguati all’utente.
