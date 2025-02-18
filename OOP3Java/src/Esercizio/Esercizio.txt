@@ -7,7 +7,7 @@ Classe Teatro
     Contiene una proprietà di tipo String (nome);
     Contiene un array di booleani (posti[]), in cui true indica che
         il posto è occupato e false che è disponibile.
-    Ha un costruttore che chiede come paramentro il numeroPosti e
+    Ha un costruttore che chiede come paramentro nome e numeroPosti e
         crea un array di lunghezza numeroPosti e inizializza tutti i posti come disponibili(false).
     Metodo prenotaPosto(int numeroPosto), che:
         Lancia un'eccezione se il numero del posto è fuori dall'intervallo valido.
