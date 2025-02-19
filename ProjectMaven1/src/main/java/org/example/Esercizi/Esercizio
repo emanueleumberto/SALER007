@@ -1,0 +1,37 @@
+Sistema di Gestione Prestiti Librari
+Scrivi un programma in Java per gestire il sistema di prestiti di una biblioteca.
+Il sistema deve gestire i libri disponibili, i prestiti e i lettori registrati.
+- Classe Libro:
+    Attributi:
+        String isbn (codice univoco del libro)
+        String titolo
+        String autore
+        int annoPubblicazione
+- Classe Lettore:
+    Attributi:
+        int id (identificativo univoco)
+        String nome
+        String email
+- Classe Biblioteca:
+    Deve gestire le seguenti strutture dati:
+
+    List<Libro> → contiene tutti i libri disponibili in biblioteca.
+    Set<Lettore> -> contiene tutti gli utenti registrati in biblioteca.
+    Map<Lettore, Set<Libro>> → tiene traccia dei prestiti:
+        La chiave è un oggetto Lettore.
+        Il valore è un Set di Libro che rappresenta i libri attualmente presi in prestito dal lettore.
+
+    Metodi richiesti nella classe Biblioteca:
+
+    void aggiungiLibro(Libro libro): aggiunge un nuovo libro alla biblioteca.
+    void registraLettore(Lettore lettore): registra un nuovo lettore.
+    boolean prestaLibro(Lettore lettore, String isbn): assegna un libro a un lettore se disponibile,
+            restituendo true se il prestito è andato a buon fine, altrimenti false.
+    boolean restituisciLibro(Lettore lettore, String isbn): permette al lettore di restituire un libro.
+    Set<Libro> getLibriInPrestito(Lettore lettore): restituisce l'insieme dei libri attualmente
+            presi in prestito da un lettore.
+    void stampaPrestiti(): stampa tutti i lettori con i rispettivi libri in prestito.
+
+    Gestire le eventuali eccezioni che si potrebbero verificare
+    Utilizzare Java Faker per la creazione di Libri e Lettori
+    Utilizzare Logback per le stampe su terminale e la registrazione di Warning o Errori su file
