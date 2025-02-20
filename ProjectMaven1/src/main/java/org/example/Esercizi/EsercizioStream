@@ -1,0 +1,20 @@
+Titolo: Analisi e manipolazione di una lista di prodotti con Java Stream API
+
+Descrizione:
+Si deve realizzare un programma in Java che gestisca una lista di prodotti.
+Ogni prodotto ha le seguenti caratteristiche:
+    id (intero)
+    nome (stringa)
+    categoria (stringa)
+    prezzo (double)
+    quantitàDisponibile (intero)
+
+Il programma dovrà:
+
+Creare una lista di almeno 10 prodotti con valori diversi utilizzando Java Faker.
+Filtrare e stampare i prodotti con prezzo superiore a 50€.
+Estrarre una lista dei nomi dei prodotti appartenenti a una categoria specifica (es. "Elettronica").
+Calcolare e stampare il prezzo medio di tutti i prodotti.
+Verificare se almeno un prodotto della lista ha un prezzo inferiore a 10€.
+Ordinare la lista in base al prezzo in modo crescente e stamparla.
+Extra: Raggruppare i prodotti per categoria e visualizzarli.
