@@ -1,4 +1,4 @@
-package org.example.Esercizi;
+package org.example.Esercizi.EsercizioBiblioteca;
 
 public class PrestitoException extends Exception{
     public PrestitoException(String message) {

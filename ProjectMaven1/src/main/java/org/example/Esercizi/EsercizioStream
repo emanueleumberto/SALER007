@@ -11,10 +11,10 @@ Ogni prodotto ha le seguenti caratteristiche:
 
 Il programma dovrà:
 
-Creare una lista di almeno 10 prodotti con valori diversi utilizzando Java Faker.
-Filtrare e stampare i prodotti con prezzo superiore a 50€.
-Estrarre una lista dei nomi dei prodotti appartenenti a una categoria specifica (es. "Elettronica").
-Calcolare e stampare il prezzo medio di tutti i prodotti.
-Verificare se almeno un prodotto della lista ha un prezzo inferiore a 10€.
-Ordinare la lista in base al prezzo in modo crescente e stamparla.
-Extra: Raggruppare i prodotti per categoria e visualizzarli.
+    1 - Creare una lista di almeno 10 prodotti con valori diversi utilizzando Java Faker.
+    2 - Filtrare e stampare i prodotti con prezzo superiore a 50€.
+    3 - Estrarre una lista dei nomi dei prodotti appartenenti a una categoria specifica (es. "Elettronica").
+    4 - Calcolare e stampare il prezzo medio di tutti i prodotti.
+    5 - Verificare se almeno un prodotto della lista ha un prezzo inferiore a 10€.
+    6 - Extra: Ordinare la lista in base al prezzo in modo crescente e stamparla.
+    7 - Extra: Raggruppare i prodotti per categoria e visualizzarli.
