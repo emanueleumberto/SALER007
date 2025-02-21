@@ -1,4 +1,4 @@
-package org.example.Esercizi;
+package org.example.Esercizi.EsercizioProdotti;
 
 public class Prodotto {
 

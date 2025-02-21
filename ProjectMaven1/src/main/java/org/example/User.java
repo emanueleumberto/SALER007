@@ -26,6 +26,18 @@ public class User {
         }*/
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
     public void addHobby(String h) {
         this.hobby.add(h);
     }

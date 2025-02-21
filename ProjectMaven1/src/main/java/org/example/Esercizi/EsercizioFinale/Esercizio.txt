@@ -1,0 +1,73 @@
+Traccia dell'esercizio: "Gestione di un'Officina Meccanica"
+
+Scrivere un'applicazione Java per gestire un’officina meccanica.
+L’applicazione deve permettere di:
+- Caricare un elenco di veicoli da un file di testo
+- Gestire l'elenco in memoria con le Collection e Stream API
+- Aggiungere, rimuovere e cercare veicoli
+- Registrare interventi di manutenzione per ciascun veicolo
+- Salvare i dati aggiornati su file
+- Gestire eventuali eccezioni
+
+Definire le seguenti classi:
+
+-> Classe Veicolo (Questa classe rappresenta un veicolo)
+    Attributi:
+        String targa (codice univoco)
+        String marca
+        String modello
+        int annoImmatricolazione
+        List<String> interventiManutenzione (elenco delle manutenzioni effettuate)
+    Metodi:
+        Costruttore con parametri
+        Metodi getters e setters
+        void aggiungiIntervento(String intervento): aggiunge un intervento alla lista
+        Override di toString() per rappresentare il veicolo come stringa
+
+-> Classe Officina (Questa classe gestisce il parco veicoli)
+    Attributi:
+        String nomeOfficina
+        Map<String, Veicolo> veicoli (HashMap per gestire i veicoli, con la targa come chiave)
+    Metodi:
+        Costruttore con parametri
+        Metodi getters
+        void aggiungiVeicolo(Veicolo veicolo): aggiunge un veicolo alla lista
+        void rimuoviVeicolo(String targa): rimuove un veicolo data la targa
+        Optional<Veicolo> cercaVeicolo(String targa): restituisce il veicolo con quella targa
+        void visualizzaVeicoli(): stampa tutti i veicoli registrati
+        List<Veicolo> filtraVeicoliPerMarca(String marca): restituisce un elenco di veicoli di una determinata marca (usando Stream)
+
+-> Classe FileManager (Questa classe gestisce la persistenza dei dati)
+   Attributi:
+        File file
+   Metodi:
+        Map<String, Veicolo> leggiVeicoliDaFile(File filePath): legge i veicoli da un file di testo e li inserisce nella mappa
+        void scriviVeicoliSuFile(File filePath, Map<String, Veicolo> veicoli): salva l’elenco aggiornato su un file
+
+   Formato del file (veicoli.txt):
+
+-> Gestione delle eccezioni
+   Implementare un’adeguata gestione delle eccezioni per:
+
+        Errore di lettura/scrittura su file (IOException)
+        Dati non validi nel file di input (NumberFormatException)
+        Veicolo non trovato in fase di ricerca o rimozione (NoSuchElementException)
+
+-> Creazione del programma principale
+
+   Nel metodo main, realizzare un menu interattivo che permetta di:
+        Caricare i veicoli da file
+        Aggiungere un nuovo veicolo
+        Rimuovere un veicolo per targa
+        Registrare un intervento di manutenzione su un veicolo
+        Cercare un veicolo per targa
+        Filtrare i veicoli per marca
+        Visualizzare tutti i veicoli
+        Salvare i veicoli su file
+        Uscire
+
+   Utilizzare Scanner per l’input utente e un ciclo while per gestire il menu.
+
+-> EXTRA (opzionale)
+   Aggiungere un’opzione per ordinare i veicoli per anno di immatricolazione
+   Usare un Set invece di una List per evitare duplicati di targhe

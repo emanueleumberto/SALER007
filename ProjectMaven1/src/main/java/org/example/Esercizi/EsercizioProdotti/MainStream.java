@@ -1,7 +1,6 @@
-package org.example.Esercizi.EsercizioBiblioteca;
+package org.example.Esercizi.EsercizioProdotti;
 
 import com.github.javafaker.Faker;
-import org.example.Esercizi.Prodotto;
 
 import java.util.*;
 import java.util.stream.Collectors;

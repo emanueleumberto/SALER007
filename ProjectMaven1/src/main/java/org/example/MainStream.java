@@ -110,6 +110,7 @@ public class MainStream {
                 //.forEach(System.out::println);
                 //.max();
                 //.min();
+                //.sum();
                 .average();
 
         System.out.println(age);
@@ -147,5 +148,43 @@ public class MainStream {
         //myStreamNum.anyMatch(e -> e > 5); // true
         //myStreamNum.allMatch(e -> e > 5); // false
         //myStreamNum.noneMatch(e -> e > 5); // False
+
+
+        // Collectors
+        // Collectors.toList() -> Raccolgo tutti gli elementi manipolati dallo Stream in una List
+        // Collectors.toSet() -> Raccolgo tutti gli elementi manipolati dallo Stream in un Set
+        // Collectors.toMap() -> Raccolgo tutti gli elementi manipolati dallo Stream in un Map,
+        //                       specificando chiave e valore.
+        // Collectors.groupingBy() -> Raggruppare gli elementi di uno Stream in una mappa
+        //                              basata su una funzione di raggruppamento in cui la chiave
+        //                              sarà la proprietà sul quale voglio raggruppare e il valore
+        //                              sarà una lista di elementi raggruppati.
+        // Collectors.summingInt() -> Calcola la somma dei valori interi contenuti in uno Stream
+        // Collectors.summingLong() -> Calcola la somma dei valori long contenuti in uno Stream
+        // Collectors.summingDouble() -> Calcola la somma dei valori double contenuti in uno Stream
+        // Collectors.averageInt() -> Calcola la media dei valori interi contenuti in uno Stream
+        // Collectors.averageLong() -> Calcola la media dei valori long contenuti in uno Stream
+        // Collectors.averageDouble() -> Calcola la media dei valori double contenuti in uno Stream
+
+        // Comparators
+        // Comparator è un metodo per la gestione avanzata di ordinamenti in uno Stream
+        // .sorted(Comparator.comparing(Oggetto::proprieta))
+        // .sorted(Comparator.comparingInt(Oggetto::IntProprieta))
+        // .sorted(Comparator.comparingLong(Oggetto::LongProprieta))
+        // .sorted(Comparator.comparingDouble(Oggetto::DoubleProprieta))
+
+        // Mapping
+        // .mapToInt(Oggetto::IntProprieta) -> Trasforma uno Stream di oggetti in uno Stream
+        //                                  di interi con i valori della proprietà letta
+        // .mapToLong(Oggetto::LongProprieta) -> Trasforma uno Stream di oggetti in uno Stream
+        //                                  di Long con i valori della proprietà letta
+        // .mapToDouble(Oggetto::DoubleProprieta) -> Trasforma uno Stream di oggetti in uno Stream
+        //                                  di double con i valori della proprietà letta
+
+        // .flatMap(obj -> obj.propList.stream()) ->  Trasforma uno Stream di oggetti in uno Stream
+        //                                          di valori letti da una lista contenuta in una
+        //                                          proprietà di ogni sigolo oggetto
+
+
     }
 }
