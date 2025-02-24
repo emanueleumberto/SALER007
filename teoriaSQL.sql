@@ -152,3 +152,30 @@ ALTER TABLE saler007.users_courses
 	REFERENCES courses(course_id)
 	ON UPDATE CASCADE
 	ON DELETE CASCADE;
+    
+    
+CREATE TABLE IF NOT EXISTS saler007.taba(
+	id_tab_a INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    id_tab_b INT NOT NULL
+    -- FOREIGN KEY(id_tab_b) REFERENCES saler007.tabb(id_tab_b)
+);
+
+CREATE TABLE IF NOT EXISTS saler007.tabb(
+	id_tab_b INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    id_tab_a INT NOT NULL
+    -- FOREIGN KEY(id_tab_a) REFERENCES saler007.taba(id_tab_a)
+);
+
+ALTER TABLE saler007.taba ADD CONSTRAINT 
+	FOREIGN KEY(id_tab_b) 
+    REFERENCES saler007.tabb(id_tab_b)
+    ON UPDATE CASCADE
+	ON DELETE CASCADE;
+    
+ALTER TABLE saler007.tabb ADD CONSTRAINT 
+	FOREIGN KEY(id_tab_a) 
+    REFERENCES saler007.taba(id_tab_a)
+    ON UPDATE CASCADE
+	ON DELETE CASCADE;
