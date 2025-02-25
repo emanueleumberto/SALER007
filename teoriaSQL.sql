@@ -53,6 +53,15 @@
 
 -- RELAZIONI -> OneToOne - OneToMany | ManyToOne - ManyToMany
 
+-- DML -> Data Manipolation Language 
+-- INSERT | UPDATE | DELETE
+
+-- INSERT INTO db_name.table_name (column_name1, column_name2, column_name3, ..., column_nameN)
+--							VALUES (value1, value2, value3, ..., valueN);
+
+
+-- DQL -> Data Query Language
+
 -- PRATICA
 -- SHOW DATABASES;
 DROP DATABASE IF EXISTS saler007;
@@ -179,3 +188,49 @@ ALTER TABLE saler007.tabb ADD CONSTRAINT
     REFERENCES saler007.taba(id_tab_a)
     ON UPDATE CASCADE
 	ON DELETE CASCADE;
+    
+-- DML
+-- INSERT | UPDATE | DELETE
+
+-- users -> user_id(PK) - firstname(NotNull) - lastname(NotNull) - age(Uns,Null,default18) - city(Null) - fiscal_code (CHAR(16) NOT NULL UNIQUE)
+INSERT INTO saler007.users (firstname, lastname, age, city, fiscal_code) VALUES ("Mario", "Rossi", 40, "Roma", "ABCDEF12G34H567I"); -- Tutto ok
+INSERT INTO saler007.users (firstname, lastname, city, fiscal_code) VALUES ("Giuseppe", "Verdi", "Milano", "ABCDEF12G34H567L"); -- age -> default 18
+INSERT INTO saler007.users (firstname, lastname, age, fiscal_code) VALUES ("Francesca", "Neri", 22, "ABCDEF12G34H567M"); -- city -> null
+INSERT INTO saler007.users (firstname, city, age, fiscal_code) VALUES ("Antonio", "Napoli", 31, "ABCDEF12G34H567N"); -- lastname -> not null ERRORE
+INSERT INTO saler007.users (firstname, lastname, city, age, fiscal_code) VALUES ("Antonio", "Bianchi", "Napoli", 31, "ABCDEF12G34H567L"); -- fiscal_code -> unique ERRORE
+INSERT INTO saler007.users (firstname, lastname, fiscal_code) VALUES ("Antonio", "Bianchi", "ABCDEF12G34H567N"); -- campi not null
+
+-- signin -> signin_id(PK) - email(NotNull, UNIQUE) - password(NotNull) - user_id(NotNull, UNIQUE, FK)
+INSERT INTO saler007.signin (email, password, user_id) 
+			VALUES	("m.rossi@example.com", "Pa$$w0rd!", 1),
+					("g.verdi@example.com", "Pa$$w0rd!", 2),
+                    -- ("f.neri@example.com", "Pa$$w0rd!", 1), -> Errore user_id duplicato
+                    ("a.bianchi@example.com", "Pa$$w0rd!", 5);
+
+-- cars -> car_id(PK) - car_name(NotNull) - car_license_plate(NotNull) - user_id(NotNull, FK)
+INSERT INTO saler007.cars (car_name, car_license_plate, user_id)
+			VALUES 	("Fiat Panda", "AB123CD", 1),
+					("Ford Fiesta", "DF456GH", 3),
+                    ("Renault Clio", "IL789MN", 1),
+                    ("Mercedes ClasseA", "OP147QR", 5);
+    
+-- courses -> course_id(PK) - course_name(NotNull) - course_code(NotNull) - course_hours(Null,default250)
+INSERT INTO saler007.courses (course_name, course_code, course_hours)
+			VALUES	("Java", 1, 100),
+					("SQL", 2, 50),
+                    ("Spring", 3, 80);
+INSERT INTO saler007.courses (course_name, course_code) VALUES	("BackEnd", 4);
+
+-- users_courses -> users_course_id(PK) - user_id(NotNull, FK) - course_id(NotNull, FK) - iscr_date(Timestamp Default CURRENT_TIMESTAMP)
+INSERT INTO saler007.users_courses (user_id, course_id) 
+			VALUES	(1, 2), (1, 4), (2, 4), (3, 2), (3, 1);
+
+UPDATE saler007.courses SET course_name = "SpringBoot", course_hours = 75 WHERE course_id = 3;
+
+DELETE FROM saler007.users WHERE user_id = 1;
+
+SELECT * FROM saler007.users;
+SELECT * FROM saler007.signin;
+SELECT * FROM saler007.cars;
+SELECT * FROM saler007.courses;
+SELECT * FROM saler007.users_courses;

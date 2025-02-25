@@ -150,20 +150,22 @@ ALTER TABLE librarydb.authors MODIFY birth_year YEAR;
 ALTER TABLE librarydb.userdetails MODIFY phone_number CHAR(10);
 
 -- 9. Eliminare la colonna genre dalla tabella Books.
-ALTER TABLE librarydb.books DROP COLUMN genre;
+-- ALTER TABLE librarydb.books DROP COLUMN genre;
 
 -- 10. Eliminare la colonna "birth_year" dalla tabella Authors
-ALTER TABLE librarydb.authors DROP COLUMN birth_year;
+-- ALTER TABLE librarydb.authors DROP COLUMN birth_year;
 
 -- 11. Eliminare la tabella Authors.
-ALTER TABLE librarydb.books DROP CONSTRAINT books_authors_fk;
-ALTER TABLE librarydb.books DROP COLUMN author_id;
-DROP TABLE librarydb.authors;
+-- ALTER TABLE librarydb.books DROP CONSTRAINT books_authors_fk;
+-- ALTER TABLE librarydb.books DROP COLUMN author_id;
+-- DROP TABLE librarydb.authors;
 
 -- 12. Eliminare il database LibraryDB.
-DROP DATABASE librarydb;
+-- DROP DATABASE librarydb;
 
-
+-- Esercizio DML 
+-- Inserire dai 5 ai 10 valori corretti in ogni tabella del database librarydb testando le relazioni e i vincoli di ogni tabella
+-- Utilizzare le istruzioni INSERT, UPDATE, DELETE
 
 
 
