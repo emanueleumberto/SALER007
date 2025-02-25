@@ -59,12 +59,159 @@
 -- INSERT INTO db_name.table_name (column_name1, column_name2, column_name3, ..., column_nameN)
 --							VALUES (value1, value2, value3, ..., valueN);
 
+-- UPDATE db_name.table_name 
+--	SET column_name1 = newValue1, column_name2 = newValue2, ...., column_nameN = newValueN 
+--	WHERE column_name = value;
+
+-- DELETE FROM db_name.table_name WHERE column_name = value;
 
 -- DQL -> Data Query Language
 
+-- SELECT 	-> Un elenco di campi o tutto (*) da restirue in un resultset di dati
+-- FROM 	-> Indica la sorgente di dati da cui leggere (la/le tabelle)
+-- WHERE	-> Search Condition, applica un filtro sulle righe della tabella indicata nel FROM
+-- GROUP BY	-> Aggrega dei dati rispetto ad un a combinazione univoca data dalla group by list
+-- HAVING	-> Search Condition, applica un filtro sulle righe della tabella filtrata e aggragata dal GROUP BY
+-- ORDER BY	-> Consente di definire un ordinamento ben preciso
+-- LIMIT	-> Consente di selezionare un numero definito di record
+
+/*
+	SELECT [DISTINCT]  column_name1, column_name2, column_name3, ..., column_nameN | * | aggregate_function(expression)
+		FROM db_name.table_name
+        [WHERE search condition]
+        [GROUP BY]
+        [HAVING search condition]
+        [ORDER BY]
+        [LIMIT]
+*/
+
+/*
+	Operatori di confronto della Search Condition
+	= (uguale)
+    > (maggiore di)
+    < (minore di)
+    >= (maggiore uguale)
+    <= (minore uguale)
+    <> | != (diverso da)
+    !< (non minore di)
+    !> (non maggiore di)
+*/
+
+/*
+	Operatori logici della Search Condition
+    AND (restituisce true solo le entrambe le condizioni boolene restituiscono true)
+    OR (restituisce true se almento una delle condizioni boolene restituisce true)
+*/
+
+/*
+	LIKE (contiene... | caratteri Jolly -> %_)
+    BETWEEN (restituisce tutti i valori compresi tra >= AND <= del range specificato)
+    IN | NOT IN (Un elenco di dati in cui individuare una corrispondenza)
+*/
+
+/*
+	Functions SQL
+    
+    String Function
+    https://dev.mysql.com/doc/refman/8.4/en/string-functions.html
+    CONCAT(column_name1, ' ', column_name2) -> funzione che permette di concatenare due o più colonne
+    UPPER('String' | column_name) -> funzione che permette di trasformare un valore in maiuscolo 
+    LOWER('String' | column_name) -> funzione che permette di trasformare un valore in minuscolo 
+    LENGTH('String' | column_name) -> funzione che restituisce la lunghezza di una stringa o del valore di un campo
+    TRIM('String' | column_name) -> funzione che restituisce un valore senza spazi vuoti prima o sopo la stringa
+    
+    Numeric Function
+    https://dev.mysql.com/doc/refman/8.4/en/numeric-functions.html
+    COUNT(* | DISTINCT column_name) -> funzione che restituisce il numero di record di una query
+    FORMAT(number | column_name, 2) -> funzione che restituisce un numero decimale formattato
+    TRUNCATE(number | column_name, 2) -> funzione che restituisce un numero decimale troncato
+    ABS(number | column_name) -> funzione che restituisce un valore assoluto, senza segno (-)
+    AVG(column_name) ->  funzione che restituisce la media dei valori di una colonna
+    CEIL(column_name) -> funzione che restituisce un valore arrotondato per eccesso
+    FLOOR(column_name) -> funzione che restituisce un valore arrotondato per difetto
+    ROUND(column_name) -> funzione che restituisce un valore arrotondato la numero intero più vicino 
+    RAND() -> funzione che restituisce un valore casuale da 0 a 1
+    MAX(column_name) -> funzione che restituisce il valore massimo 
+    MIN(column_name) -> funzione che restituisce il valore minimo
+    SUM(column_name) -> funzione che restituisce la somma dei valori di una colonna
+    
+    Date Function
+    https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html
+    ADDDATE(date, n) -> funzione che aggiunge n ad una data
+    ADDTIME(datetime, n) -> funzione che aggiunge n ad un valore orario
+    CURRENT_DATE() -> funzione che restituisce una data in formato 'YYYY-MM-DD' (String)
+    CURRENT_TIME() -> funzione che restituisce un orario in formato 'HH-MM-SS' (String)
+    CURRENT_TIMESTAMP() -> funzione che restituisce data e ora del momento
+    DATEDIFF(date1, date2) -> funzione che calcola la differenza di giorni tra due date
+    DAY(date) ->  funzione che restituisce il giorno da una data completa
+    MONTH(date) ->  funzione che restituisce il mese da una data completa
+    YEAR(date) ->  funzione che restituisce l'anno da una data completa
+    HOUR(datetime) ->  funzione che restituisce l'ora da una data completa
+    MINUTE(datetime) ->  funzione che restituisce i minuti da una data completa
+    SECOND(datetime) ->  funzione che restituisce i secondi da una data completa
+    
+    Advanced Function
+    ISNULL(column_name) -> funzione che restituisce 1 o 0 in base al valore NULL contenuto in una colonna
+    LAST_INSERT_ID() -> funzione che restituisce l'ultimo valore intero del campo ID della colonna PK
+*/
+
+SELECT * FROM saler007.users;
+SELECT * FROM saler007.cars;
+SELECT * FROM saler007.courses;
+SELECT firstname, lastname FROM saler007.users;
+SELECT firstname, lastname FROM saler007.users WHERE city = 'Milano';
+SELECT * FROM saler007.users WHERE age < 20;
+SELECT * FROM saler007.users WHERE lastname != 'Verdi';
+SELECT * FROM saler007.users WHERE lastname != 'Verdi' AND age < 20;
+SELECT * FROM saler007.users WHERE lastname LIKE '%er%';
+SELECT * FROM saler007.users WHERE firstname LIKE '__a%';
+SELECT * FROM saler007.users WHERE fiscal_code LIKE '%L';
+SELECT * FROM saler007.users WHERE fiscal_code LIKE 'AB%L';
+SELECT * FROM saler007.courses WHERE course_hours BETWEEN 50 AND 100;
+SELECT * FROM saler007.courses WHERE course_name IN ('Javascript', 'Java', 'PHP', 'NodeJS', 'Python');
+SELECT * FROM saler007.courses WHERE course_name NOT IN ('Javascript', 'Java', 'PHP', 'NodeJS', 'Python') AND course_hours > 100;
+SELECT UPPER(course_name) FROM saler007.courses;
+SELECT LOWER(course_name) FROM saler007.courses;
+SELECT LENGTH(course_name) FROM saler007.courses;
+SELECT CONCAT(course_name, '(', course_hours, ')') FROM saler007.courses;
+SELECT COUNT(*) FROM saler007.courses WHERE course_hours > 50;
+SELECT course_name, MAX(course_hours) FROM saler007.courses;
+SELECT SUM(course_hours) FROM saler007.courses;
+SELECT LAST_INSERT_ID() FROM saler007.cars;
+
+
+SELECT city, count(*) FROM saler007.users GROUP BY city;
+SELECT city, count(*) FROM saler007.users WHERE age >= 18 GROUP BY city;
+SELECT city, count(*) FROM saler007.users WHERE age >= 18 GROUP BY city HAVING count(*) >= 2;
+SELECT city, count(*) FROM saler007.users WHERE age >= 18 GROUP BY city HAVING count(*) >= 2 ORDER BY city ASC LIMIT 3;
+-- FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT -> SELECT
+
+SELECT * FROM saler007.users;
+SELECT * FROM saler007.signin;
+
+SELECT *
+	FROM saler007.signin AS s 
+    INNER JOIN saler007.users AS u 
+    ON s.user_id = u.user_id;
+
+SELECT u.firstname, u.lastname, u.age, u.city, s.email 
+	FROM saler007.signin AS s 
+    INNER JOIN saler007.users AS u 
+    ON s.user_id = u.user_id;
+    
+SELECT u.firstname, u.lastname, u.age, u.city, s.email 
+	FROM saler007.users AS u 
+    LEFT JOIN saler007.signin AS s 
+    ON s.user_id = u.user_id;
+
+SELECT u.firstname, u.lastname, u.age, u.city, s.email 
+	FROM saler007.users AS u 
+    RIGHT JOIN saler007.signin AS s 
+    ON s.user_id = u.user_id;
+
 -- PRATICA
 -- SHOW DATABASES;
-DROP DATABASE IF EXISTS saler007;
+-- DROP DATABASE IF EXISTS saler007;
 CREATE DATABASE IF NOT EXISTS saler007;
 -- ALTER DATABASE saler007 CHARACTER SET = utf8;
 USE saler007;
@@ -140,8 +287,8 @@ CREATE TABLE IF NOT EXISTS saler007.users_courses (
 		ON DELETE CASCADE*/
 );
 
-ALTER TABLE saler007.users_courses DROP CONSTRAINT users_coursesfk1;
-ALTER TABLE saler007.users_courses DROP CONSTRAINT users_coursesfk2;
+-- ALTER TABLE saler007.users_courses DROP CONSTRAINT users_coursesfk1;
+-- ALTER TABLE saler007.users_courses DROP CONSTRAINT users_coursesfk2;
 
 ALTER TABLE saler007.users_courses 
 	ADD COLUMN iscr_date TIMESTAMP 
@@ -196,8 +343,8 @@ ALTER TABLE saler007.tabb ADD CONSTRAINT
 INSERT INTO saler007.users (firstname, lastname, age, city, fiscal_code) VALUES ("Mario", "Rossi", 40, "Roma", "ABCDEF12G34H567I"); -- Tutto ok
 INSERT INTO saler007.users (firstname, lastname, city, fiscal_code) VALUES ("Giuseppe", "Verdi", "Milano", "ABCDEF12G34H567L"); -- age -> default 18
 INSERT INTO saler007.users (firstname, lastname, age, fiscal_code) VALUES ("Francesca", "Neri", 22, "ABCDEF12G34H567M"); -- city -> null
-INSERT INTO saler007.users (firstname, city, age, fiscal_code) VALUES ("Antonio", "Napoli", 31, "ABCDEF12G34H567N"); -- lastname -> not null ERRORE
-INSERT INTO saler007.users (firstname, lastname, city, age, fiscal_code) VALUES ("Antonio", "Bianchi", "Napoli", 31, "ABCDEF12G34H567L"); -- fiscal_code -> unique ERRORE
+-- INSERT INTO saler007.users (firstname, city, age, fiscal_code) VALUES ("Antonio", "Napoli", 31, "ABCDEF12G34H567N"); -- lastname -> not null ERRORE
+-- INSERT INTO saler007.users (firstname, lastname, city, age, fiscal_code) VALUES ("Antonio", "Bianchi", "Napoli", 31, "ABCDEF12G34H567L"); -- fiscal_code -> unique ERRORE
 INSERT INTO saler007.users (firstname, lastname, fiscal_code) VALUES ("Antonio", "Bianchi", "ABCDEF12G34H567N"); -- campi not null
 
 -- signin -> signin_id(PK) - email(NotNull, UNIQUE) - password(NotNull) - user_id(NotNull, UNIQUE, FK)
@@ -205,14 +352,14 @@ INSERT INTO saler007.signin (email, password, user_id)
 			VALUES	("m.rossi@example.com", "Pa$$w0rd!", 1),
 					("g.verdi@example.com", "Pa$$w0rd!", 2),
                     -- ("f.neri@example.com", "Pa$$w0rd!", 1), -> Errore user_id duplicato
-                    ("a.bianchi@example.com", "Pa$$w0rd!", 5);
+                    ("a.bianchi@example.com", "Pa$$w0rd!", 4);
 
 -- cars -> car_id(PK) - car_name(NotNull) - car_license_plate(NotNull) - user_id(NotNull, FK)
 INSERT INTO saler007.cars (car_name, car_license_plate, user_id)
 			VALUES 	("Fiat Panda", "AB123CD", 1),
 					("Ford Fiesta", "DF456GH", 3),
                     ("Renault Clio", "IL789MN", 1),
-                    ("Mercedes ClasseA", "OP147QR", 5);
+                    ("Mercedes ClasseA", "OP147QR", 4);
     
 -- courses -> course_id(PK) - course_name(NotNull) - course_code(NotNull) - course_hours(Null,default250)
 INSERT INTO saler007.courses (course_name, course_code, course_hours)
@@ -227,10 +374,13 @@ INSERT INTO saler007.users_courses (user_id, course_id)
 
 UPDATE saler007.courses SET course_name = "SpringBoot", course_hours = 75 WHERE course_id = 3;
 
-DELETE FROM saler007.users WHERE user_id = 1;
+-- DELETE FROM saler007.users WHERE user_id = 1;
+
+-- DQL
 
 SELECT * FROM saler007.users;
 SELECT * FROM saler007.signin;
 SELECT * FROM saler007.cars;
 SELECT * FROM saler007.courses;
 SELECT * FROM saler007.users_courses;
+

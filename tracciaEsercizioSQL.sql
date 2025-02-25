@@ -167,8 +167,102 @@ ALTER TABLE librarydb.userdetails MODIFY phone_number CHAR(10);
 -- Inserire dai 5 ai 10 valori corretti in ogni tabella del database librarydb testando le relazioni e i vincoli di ogni tabella
 -- Utilizzare le istruzioni INSERT, UPDATE, DELETE
 
+-- Inserire utenti nella tabella users
+ALTER TABLE librarydb.users MODIFY COLUMN email VARCHAR(25);
 
+INSERT INTO librarydb.users (name, email) 
+		VALUES 	('Mario Rossi', 'mario.rossi@email.com'),
+				('Laura Bianchi', 'laura.bianchi@email.com'),
+				('Giovanni Verdi', 'giovanni.verdi@email.com'),
+                ('Giuseppe Viola', 'giuseppe.viola@email.com'),
+                ('Francesca Neri', 'francesca.neri@email.com');
+-- Inserire dettagli utente nella tabella userdetails
+INSERT INTO librarydb.userdetails (user_id, address, phone_number)
+		VALUES	(1, 'Via Roma 10, Milano', '3456789012'),
+				(2, 'Corso Italia 25, Torino', '3334567890'),
+				(3, 'Piazza Duomo 5, Napoli', '3923456789'),
+                (4, 'Via Marconi 81, Firenze', '3924566012'),
+                (5, 'Piazza Roma 50, Torino', '3330126789');
 
+-- Inserire autori nella tabella authors
+INSERT INTO librarydb.authors (name, birth_year)
+		VALUES	('Umberto Eco', 1932),
+				('J.K. Rowling', 1965),
+                ('George Orwell', 1903),
+                ('Davide Bacchi', 1968),
+                ('Anna Salvati', 1948);
+                
+-- Inserire libri nella tabella books
+INSERT INTO librarydb.books (title, publication_year, isbn, genre, author_id )
+		VALUES	('Il Nome della Rosa', 1980, '978-88-061', 'romanzo', 1),
+				('Harry Potter e la Pietra Filosofale', 1997, '978-88-092', 'fantasy', 2),
+                ('1984', 1949, '978-45-228', 'romanzo', 3),
+                ('Animali Fantastici e Dove Trovarli', 2001, '978-88-090', 'fantasy', 2),
+                ('La ricerca. Ori Miradha', 2014, '978-88-911', 'fantasy',  5),
+                ('Le terrecotte della donazione Guandalini Kabaivanska', 2024, '883-36-469', 'storico', 4);
+                
+-- Inserire i prestiti nella tabella loans
+INSERT INTO librarydb.loans (user_id, book_id, loan_date, return_date)
+		VALUES	(2, 5, '2025-01-08', null),
+				(4, 1, '2025-02-12', '2025-02-15'),
+                (2, 3, '2025-01-08', '2025-01-10'),
+                (1, 2, '2025-01-26', null),
+                (3, 3, '2025-01-11', '2025-01-18'),
+                (5, 4, '2025-02-20', null);
+                
+-- Aggiornare indirizzo di un utente
+UPDATE librarydb.userdetails SET address = 'Via Garibaldi 50 Torino' WHERE user_id = 5;
+-- Aggiornare le informazioni di un libro
+UPDATE librarydb.books SET publication_year = 2000 WHERE book_id = 1;
+-- Aggiornare le informazioni sulla tabella prestiti
+UPDATE librarydb.loans SET return_date = '2025-02-25' WHERE loan_id = 4;
 
+SELECT * FROM librarydb.users;
+SELECT * FROM librarydb.userdetails;
+SELECT * FROM librarydb.authors;
+SELECT * FROM librarydb.books;
+SELECT * FROM librarydb.loans;
 
+-- Esercizio DQL 
+-- Recuperare Dati con Query (SELECT)
+
+-- 1. Visualizzare tutti gli utenti e i loro dettagli
+
+-- 2. Mostrare tutti i libri e i rispettivi autori 
+
+-- 3. Recuperare tutti i prestiti con nomi degli utenti e titoli dei libri
+
+-- 4. Trovare tutti i libri non ancora restituiti
+
+-- 5. Contare quanti libri ha scritto ogni autore
+
+-- 6. Trovare gli utenti che hanno preso in prestito almeno 2 libri
+
+-- 7. Trovare tutti i libri pubblicati dopo il 2000 
+
+-- 8. Trovare gli utenti che vivono in una città specifica
+
+-- 9. Recuperare tutti i prestiti effettuati in un determinato intervallo di date
+
+-- 10. Recuperare i libri scritti da un autore specifico (es. "J.K. Rowling")
+
+-- 11. Elenco dei libri ordinato per anno di pubblicazione (dal più recente al più vecchio)
+
+-- 12. Elenco dei prestiti ordinato per data di prestito (dal più recente)
+
+-- 13. Contare quanti libri ci sono nella libreria
+
+-- 14. Contare quanti libri ha scritto ogni autore
+
+-- 15. Trovare l'anno di pubblicazione più vecchio e più recente dei libri
+
+-- 16. Trovare gli utenti che hanno preso in prestito più di un libro
+
+-- EXTRA
+
+-- 17. Trovare gli utenti che hanno preso in prestito il libro più recente
+
+-- 18. Trovare gli autori che non hanno ancora pubblicato libri
+
+-- 19. Recuperare i prestiti con il numero totale di prestiti per utente
 
