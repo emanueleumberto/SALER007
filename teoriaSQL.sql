@@ -155,59 +155,23 @@
     LAST_INSERT_ID() -> funzione che restituisce l'ultimo valore intero del campo ID della colonna PK
 */
 
-SELECT * FROM saler007.users;
-SELECT * FROM saler007.cars;
-SELECT * FROM saler007.courses;
-SELECT firstname, lastname FROM saler007.users;
-SELECT firstname, lastname FROM saler007.users WHERE city = 'Milano';
-SELECT * FROM saler007.users WHERE age < 20;
-SELECT * FROM saler007.users WHERE lastname != 'Verdi';
-SELECT * FROM saler007.users WHERE lastname != 'Verdi' AND age < 20;
-SELECT * FROM saler007.users WHERE lastname LIKE '%er%';
-SELECT * FROM saler007.users WHERE firstname LIKE '__a%';
-SELECT * FROM saler007.users WHERE fiscal_code LIKE '%L';
-SELECT * FROM saler007.users WHERE fiscal_code LIKE 'AB%L';
-SELECT * FROM saler007.courses WHERE course_hours BETWEEN 50 AND 100;
-SELECT * FROM saler007.courses WHERE course_name IN ('Javascript', 'Java', 'PHP', 'NodeJS', 'Python');
-SELECT * FROM saler007.courses WHERE course_name NOT IN ('Javascript', 'Java', 'PHP', 'NodeJS', 'Python') AND course_hours > 100;
-SELECT UPPER(course_name) FROM saler007.courses;
-SELECT LOWER(course_name) FROM saler007.courses;
-SELECT LENGTH(course_name) FROM saler007.courses;
-SELECT CONCAT(course_name, '(', course_hours, ')') FROM saler007.courses;
-SELECT COUNT(*) FROM saler007.courses WHERE course_hours > 50;
-SELECT course_name, MAX(course_hours) FROM saler007.courses;
-SELECT SUM(course_hours) FROM saler007.courses;
-SELECT LAST_INSERT_ID() FROM saler007.cars;
+/*
+	SELECT [DISTINCT]  column_name1, column_name2, column_name3, ..., column_nameN | * | aggregate_function(expression)
+		FROM db_name.table_name1 as a
+        INNER JOIN db_name.table_name2 as b
+        ON a.column_name = b.column_name
+	
+    SELECT [DISTINCT]  column_name1, column_name2, column_name3, ..., column_nameN | * | aggregate_function(expression)
+		FROM db_name.table_name1 as a
+        LEFT JOIN db_name.table_name2 as b
+        ON a.column_name = b.column_name
+	
+    SELECT [DISTINCT]  column_name1, column_name2, column_name3, ..., column_nameN | * | aggregate_function(expression)
+		FROM db_name.table_name1 as a
+        RIGHT JOIN db_name.table_name2 as b
+        ON a.column_name = b.column_name
+*/
 
-
-SELECT city, count(*) FROM saler007.users GROUP BY city;
-SELECT city, count(*) FROM saler007.users WHERE age >= 18 GROUP BY city;
-SELECT city, count(*) FROM saler007.users WHERE age >= 18 GROUP BY city HAVING count(*) >= 2;
-SELECT city, count(*) FROM saler007.users WHERE age >= 18 GROUP BY city HAVING count(*) >= 2 ORDER BY city ASC LIMIT 3;
--- FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT -> SELECT
-
-SELECT * FROM saler007.users;
-SELECT * FROM saler007.signin;
-
-SELECT *
-	FROM saler007.signin AS s 
-    INNER JOIN saler007.users AS u 
-    ON s.user_id = u.user_id;
-
-SELECT u.firstname, u.lastname, u.age, u.city, s.email 
-	FROM saler007.signin AS s 
-    INNER JOIN saler007.users AS u 
-    ON s.user_id = u.user_id;
-    
-SELECT u.firstname, u.lastname, u.age, u.city, s.email 
-	FROM saler007.users AS u 
-    LEFT JOIN saler007.signin AS s 
-    ON s.user_id = u.user_id;
-
-SELECT u.firstname, u.lastname, u.age, u.city, s.email 
-	FROM saler007.users AS u 
-    RIGHT JOIN saler007.signin AS s 
-    ON s.user_id = u.user_id;
 
 -- PRATICA
 -- SHOW DATABASES;
@@ -383,4 +347,56 @@ SELECT * FROM saler007.signin;
 SELECT * FROM saler007.cars;
 SELECT * FROM saler007.courses;
 SELECT * FROM saler007.users_courses;
+
+
+SELECT firstname, lastname FROM saler007.users;
+SELECT firstname, lastname FROM saler007.users WHERE city = 'Milano';
+SELECT * FROM saler007.users WHERE age < 20;
+SELECT * FROM saler007.users WHERE lastname != 'Verdi';
+SELECT * FROM saler007.users WHERE lastname != 'Verdi' AND age < 20;
+SELECT * FROM saler007.users WHERE lastname LIKE '%er%';
+SELECT * FROM saler007.users WHERE firstname LIKE '__a%';
+SELECT * FROM saler007.users WHERE fiscal_code LIKE '%L';
+SELECT * FROM saler007.users WHERE fiscal_code LIKE 'AB%L';
+SELECT * FROM saler007.courses WHERE course_hours BETWEEN 50 AND 100;
+SELECT * FROM saler007.courses WHERE course_name IN ('Javascript', 'Java', 'PHP', 'NodeJS', 'Python');
+SELECT * FROM saler007.courses WHERE course_name NOT IN ('Javascript', 'Java', 'PHP', 'NodeJS', 'Python') AND course_hours > 100;
+SELECT UPPER(course_name) FROM saler007.courses;
+SELECT LOWER(course_name) FROM saler007.courses;
+SELECT LENGTH(course_name) FROM saler007.courses;
+SELECT CONCAT(course_name, '(', course_hours, ')') FROM saler007.courses;
+SELECT COUNT(*) FROM saler007.courses WHERE course_hours > 50;
+SELECT course_name, MAX(course_hours) FROM saler007.courses;
+SELECT SUM(course_hours) FROM saler007.courses;
+SELECT LAST_INSERT_ID() FROM saler007.cars;
+
+
+SELECT city, count(*) FROM saler007.users GROUP BY city;
+SELECT city, count(*) FROM saler007.users WHERE age >= 18 GROUP BY city;
+SELECT city, count(*) FROM saler007.users WHERE age >= 18 GROUP BY city HAVING count(*) >= 2;
+SELECT city, count(*) FROM saler007.users WHERE age >= 18 GROUP BY city HAVING count(*) >= 2 ORDER BY city ASC LIMIT 3;
+-- FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT -> SELECT
+
+SELECT * FROM saler007.users;
+SELECT * FROM saler007.signin;
+
+SELECT *
+	FROM saler007.signin AS s 
+    INNER JOIN saler007.users AS u 
+    ON s.user_id = u.user_id;
+
+SELECT u.firstname, u.lastname, u.age, u.city, s.email 
+	FROM saler007.signin AS s 
+    INNER JOIN saler007.users AS u 
+    ON s.user_id = u.user_id;
+    
+SELECT u.firstname, u.lastname, u.age, u.city, s.email 
+	FROM saler007.users AS u 
+    LEFT JOIN saler007.signin AS s 
+    ON s.user_id = u.user_id;
+
+SELECT u.firstname, u.lastname, u.age, u.city, s.email 
+	FROM saler007.users AS u 
+    RIGHT JOIN saler007.signin AS s 
+    ON s.user_id = u.user_id;
 
