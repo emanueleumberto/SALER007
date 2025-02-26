@@ -191,6 +191,7 @@ INSERT INTO librarydb.authors (name, birth_year)
                 ('George Orwell', 1903),
                 ('Davide Bacchi', 1968),
                 ('Anna Salvati', 1948);
+INSERT INTO librarydb.authors (name, birth_year) VALUES ('Mario Rossi', 1999);
                 
 -- Inserire libri nella tabella books
 INSERT INTO librarydb.books (title, publication_year, isbn, genre, author_id )
@@ -227,42 +228,110 @@ SELECT * FROM librarydb.loans;
 -- Recuperare Dati con Query (SELECT)
 
 -- 1. Visualizzare tutti gli utenti e i loro dettagli
+SELECT u.user_id, u.name, u.email, d.address, d.phone_number  FROM librarydb.users AS u
+	INNER JOIN librarydb.userdetails AS d
+    ON u.user_id = d.user_id ;
 
 -- 2. Mostrare tutti i libri e i rispettivi autori 
+SELECT b.title, b.publication_year, b.genre, b.isbn, a.name FROM librarydb.authors AS a 
+	LEFT JOIN librarydb.books AS b 
+    ON a.author_id = b.author_id;
 
 -- 3. Recuperare tutti i prestiti con nomi degli utenti e titoli dei libri
+SELECT u.name, b.title, l.loan_date, l.return_date FROM librarydb.loans AS l
+	INNER JOIN librarydb.users AS u ON u.user_id = l.user_id
+    INNER JOIN librarydb.books AS b ON b.book_id = l.book_id;
 
 -- 4. Trovare tutti i libri non ancora restituiti
-
+SELECT u.name, b.title, l.loan_date, l.return_date FROM librarydb.loans AS l
+	INNER JOIN librarydb.users AS u ON u.user_id = l.user_id
+    INNER JOIN librarydb.books AS b ON b.book_id = l.book_id
+    WHERE l.return_date IS NULL;
+    
 -- 5. Contare quanti libri ha scritto ogni autore
+SELECT a.name, COUNT(*) AS total_book FROM librarydb.authors AS a 
+	INNER JOIN librarydb.books AS b
+    ON a.author_id = b.author_id
+    GROUP BY a.name;
 
 -- 6. Trovare gli utenti che hanno preso in prestito almeno 2 libri
+SELECT u.name, COUNT(*) AS total_loans FROM librarydb.loans AS l 
+	INNER JOIN librarydb.users AS u 
+    ON l.user_id = u.user_id
+    GROUP BY u.name
+    HAVING COUNT(*) >=2;
 
--- 7. Trovare tutti i libri pubblicati dopo il 2000 
+-- 7. Trovare tutti i libri pubblicati dopo il 2000
+SELECT * FROM librarydb.books AS b
+	WHERE b.publication_year >= 2000;
 
 -- 8. Trovare gli utenti che vivono in una città specifica
-
+SELECT * FROM librarydb.users AS u
+	INNER JOIN librarydb.userdetails AS d
+    ON u.user_id = d.user_id
+    WHERE d.address LIKE '%Torino';
+    
 -- 9. Recuperare tutti i prestiti effettuati in un determinato intervallo di date
+SELECT u.name, b.title, l.loan_date FROM librarydb.loans AS l
+	INNER JOIN librarydb.users AS u ON u.user_id = l.user_id
+    INNER JOIN librarydb.books AS b ON b.book_id = l.book_id
+    WHERE l.loan_date BETWEEN '2025-01-15' AND '2025-02-15';
 
 -- 10. Recuperare i libri scritti da un autore specifico (es. "J.K. Rowling")
+SELECT b.title, a.name FROM librarydb.books AS b
+	INNER JOIN librarydb.authors AS a
+    ON b.author_id = a.author_id
+    WHERE a.name = 'J.K. Rowling';
 
 -- 11. Elenco dei libri ordinato per anno di pubblicazione (dal più recente al più vecchio)
+SELECT * FROM librarydb.books AS b 
+	ORDER BY b.publication_year DESC;
 
 -- 12. Elenco dei prestiti ordinato per data di prestito (dal più recente)
+SELECT b.title, u.name, l.loan_date FROM librarydb.loans AS l
+	INNER JOIN librarydb.users AS u ON u.user_id = l.user_id
+    INNER JOIN librarydb.books AS b ON b.book_id = l.book_id
+    ORDER BY l.loan_date DESC;
 
 -- 13. Contare quanti libri ci sono nella libreria
+SELECT COUNT(*) AS total_book FROM librarydb.books;
 
--- 14. Contare quanti libri ha scritto ogni autore
+-- 14. Trovare l'anno di pubblicazione più vecchio e più recente dei libri
+SELECT MIN(b.publication_year) AS oldest_book , MAX(b.publication_year) AS newest_book 
+	FROM librarydb.books AS b;
 
--- 15. Trovare l'anno di pubblicazione più vecchio e più recente dei libri
-
--- 16. Trovare gli utenti che hanno preso in prestito più di un libro
+-- 15. Trovare gli utenti che hanno preso in prestito più di un libro
+SELECT u.name, COUNT(*) AS total_loans FROM librarydb.loans AS l
+	INNER JOIN librarydb.users AS u ON u.user_id = l.user_id
+    GROUP BY u.name
+    HAVING COUNT(*) > 1;
 
 -- EXTRA
 
 -- 17. Trovare gli utenti che hanno preso in prestito il libro più recente
+SELECT u.name, b.title, b.publication_year FROM librarydb.loans AS l
+	INNER JOIN librarydb.users AS u ON u.user_id = l.user_id
+    INNER JOIN librarydb.books AS b ON b.book_id = l.book_id
+    WHERE b.publication_year = (SELECT MAX(b.publication_year) FROM librarydb.books AS b);
+
+-- 17.bis Trovare gli utenti che hanno preso in prestito il libro più recente tra quelli presi in prestito
+SELECT u.name, b.title, b.publication_year FROM librarydb.loans AS l
+	INNER JOIN librarydb.users AS u ON u.user_id = l.user_id
+    INNER JOIN librarydb.books AS b ON b.book_id = l.book_id
+    WHERE b.publication_year = (
+								SELECT MAX(b.publication_year) FROM librarydb.loans AS l 
+									INNER JOIN librarydb.books AS b ON b.book_id = l.book_id  
+								);
+    
 
 -- 18. Trovare gli autori che non hanno ancora pubblicato libri
+SELECT a.name FROM librarydb.authors AS a
+	LEFT JOIN librarydb.books AS b ON a.author_id = b.author_id
+    WHERE b.book_id IS NULL;
 
 -- 19. Recuperare i prestiti con il numero totale di prestiti per utente
+SELECT DISTINCT u.name, (
+			(SELECT COUNT(*) FROM librarydb.loans AS p WHERE p.user_id = l.user_id) ) AS total_loans
+	FROM librarydb.loans AS l
+	INNER JOIN librarydb.users AS u ON u.user_id = l.user_id;
 
