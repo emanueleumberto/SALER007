@@ -68,8 +68,8 @@ USE librarydb;
 
 CREATE TABLE IF NOT EXISTS librarydb.authors (
 	author_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    birth_year INT NOT NULL
+    name VARCHAR(100)  NOT NULL ,
+    birth_year INT NOT NULL 
 );
 
 -- 4. Creiamo le seguenti relazioni
