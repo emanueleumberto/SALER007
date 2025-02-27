@@ -19,6 +19,7 @@ public class GestioneOrdini {
 
             //db.popolaDBClienti(10);
             //db.popolaDBProdotti(15);
+            //db.popolaDBOrdini(12);
 
             // Test Clienti
             //Cliente cl = new Cliente("Mario", "Rossi", "m.rossi@example.com", "123.456.78.99");
@@ -50,11 +51,18 @@ public class GestioneOrdini {
             //Ordine or = new Ordine(co, po, 2);
             //ordineDAO.creaOrdine(or);
 
-            Ordine orRead = ordineDAO.leggiOrdine(1);
-            System.out.println(orRead);
+            //Ordine orRead = ordineDAO.leggiOrdine(2);
+            //System.out.println(orRead);
+
+            //orRead.getDettaglioOrdine().setQuantita(1);
+            //ordineDAO.modificaOrdine(orRead);
+
+            //ordineDAO.eliminaOrdine(orRead);
 
             //clienteDao.leggiTuttiIClienti().forEach(System.out::println);
             //prodottiDAO.leggiTuttiIProdotti().forEach(System.out::println);
+            //ordineDAO.leggiTuttiOrdini().forEach(System.out::println);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

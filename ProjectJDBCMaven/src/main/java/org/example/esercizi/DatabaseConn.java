@@ -2,14 +2,17 @@ package org.example.esercizi;
 
 import com.github.javafaker.Faker;
 import org.example.esercizi.DAO.ClienteDAO;
+import org.example.esercizi.DAO.OrdineDAO;
 import org.example.esercizi.DAO.ProdottoDAO;
 import org.example.esercizi.classes.Cliente;
+import org.example.esercizi.classes.Ordine;
 import org.example.esercizi.classes.Prodotto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Locale;
 
 public class DatabaseConn {
@@ -23,6 +26,7 @@ public class DatabaseConn {
     private Statement st;
     private ClienteDAO clienteDao = new ClienteDAO();
     private ProdottoDAO prodottoDao = new ProdottoDAO();
+    private OrdineDAO ordineDao = new OrdineDAO();
 
 
     public DatabaseConn() throws SQLException {
@@ -117,6 +121,20 @@ public class DatabaseConn {
             double prezzo = Double.parseDouble(fake.commerce().price(10, 999.99).replace(",", "."));
             int quantita = fake.number().numberBetween(0,10);
             prodottoDao.creaProdotto(new Prodotto(nome, descr, prezzo, quantita));
+        }
+    }
+
+    public void popolaDBOrdini(int n) throws SQLException {
+        List<Cliente> listaClienti = clienteDao.leggiTuttiIClienti();
+        List<Prodotto> listaProdotti = prodottoDao.leggiTuttiIProdotti();
+        for (int i = 0; i < n ; i++) {
+            // Cliente cliente, Prodotto prodotto, int quantita
+            Ordine o = new Ordine(
+                    listaClienti.get(fake.number().numberBetween(0, listaClienti.size() - 1)),
+                    listaProdotti.get(fake.number().numberBetween(0, listaProdotti.size() - 1)),
+                    fake.number().numberBetween(1, 3)
+            );
+            ordineDao.creaOrdine(o);
         }
     }
 }
