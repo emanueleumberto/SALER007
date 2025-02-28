@@ -1,0 +1,37 @@
+Gestione di un Database Relazionale MySQL con JDBC in Java
+
+Creare un database se non esiste chiamato GestioneOrdini.
+Definire le seguenti tabelle:
+    Tabella Clienti:
+        id_cliente (INT, chiave primaria, autoincrement)
+        nome (VARCHAR(100), non nullo)
+        cognome (VARCHAR(100), non nullo)
+        email (VARCHAR(150), unico, non nullo)
+        telefono (VARCHAR(20), opzionale)
+    Tabella Prodotti:
+        id_prodotto (INT, chiave primaria, autoincrement)
+        nome (VARCHAR(150), non nullo)
+        descrizione (TEXT, opzionale)
+        prezzo (DECIMAL(10,2), non nullo)
+        quantità_disponibile (INT, non nullo)
+    Tabella Ordini:
+        id_ordine (INT, chiave primaria, autoincrement)
+        id_cliente (INT, chiave esterna riferita a Clienti(id))
+        data_ordine (TIMESTAMP, valore di default CURRENT_TIMESTAMP)
+    Tabella DettagliOrdine:
+        id_dettagli_ordini (INT, chiave primaria, autoincrement)
+        id_ordine (INT, chiave esterna riferita a Ordini(id))
+        id_prodotto (INT, chiave esterna riferita a Prodotti(id))
+        quantità (INT, non nullo)
+        prezzo_unitario (DECIMAL(10,2), non nullo)
+
+L’applicazione deve permettere di:
+Connessione al database utilizzando JDBC.
+Creare le tabelle se non esistono già.
+Gestire i clienti (CRUD).
+Gestire i prodotti (CRUD).
+Effettuare un ordine, salvando:
+    Il cliente che effettua l'ordine.
+    I prodotti acquistati con relative quantità e prezzi unitari.
+    Visualizzare lo storico degli ordini con dettagli sui prodotti acquistati.
+    Aggiornare ed eliminare ordini e prodotti.
