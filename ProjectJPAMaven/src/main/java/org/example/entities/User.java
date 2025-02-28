@@ -1,6 +1,8 @@
 package org.example.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -31,5 +33,16 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
+
+    @ManyToMany
+    @JoinTable(
+            name = "users_courses",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> coursesList = new ArrayList<Course>();
+
+
+
 
 }
