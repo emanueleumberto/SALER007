@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Creo un bean di tipo User utilizzando un costruttore (name, lastname, city, age, email) -->
+    <bean id="beanUser" class="com.example.intoSpring.classes.User" scope="prototype">
+        <constructor-arg index="0" type="String" value="Mario"></constructor-arg>
+        <constructor-arg index="1" type="String" value="Rossi"></constructor-arg>
+        <constructor-arg index="2" type="String" value="Roma"></constructor-arg>
+        <constructor-arg index="3" type="Integer" value="45"></constructor-arg>
+        <constructor-arg index="4" type="String" value="m.rossi@example.com"></constructor-arg>
+    </bean>
+
+    <!-- Creo un bean di tipo User utilizzando i setter (name, lastname, city, age, email)  -->
+    <bean id="beanUserSetter" class="com.example.intoSpring.classes.User" scope="prototype">
+        <property name="name" value="Giuseppe" />
+        <property name="lastname" value="Verdi" />
+        <property name="city" value="Roma" />
+        <property name="age" value="22" />
+        <property name="email" value="g.verdi@example.com" />
+    </bean>
+
+</beans>

@@ -1,0 +1,48 @@
+Gestione Pizzeria con Spring
+Creare un’applicazione Spring che gestisca una pizzeria, utilizzando Spring Beans
+e la configurazione tramite classe Java (senza XML).
+
+Requisiti:
+Creare una classe Pizza con attributi nome, ingredienti (lista di stringhe) e prezzo.
+Creare una classe Drink con attributi nome, gradazione e prezzo.
+Creare una classe Menu, che contenga una lista di pizze disponibili e la lista di drink.
+Creare una classe di configurazione Spring (PizzeriaConfig) per definire i Beans.
+Creare una classe Main per testare il funzionamento del sistema.
+
+1. Classe Pizza (Bean con dati di una pizza)
+Deve avere attributi privati con getter e setter.
+Deve includere un costruttore per inizializzare i valori.
+Deve avere un metodo toString per la stampa dei valori.
+
+2. Classe Drink (Bean con dati di un drink)
+Deve avere attributi privati con getter e setter.
+Deve includere un costruttore per inizializzare i valori.
+Deve avere un metodo toString per la stampa dei valori.
+
+3. Classe Menu (Bean con lista di pizze e drink)
+Deve contenere una proprietà nome, una lista di pizze e una lista di drink.
+Deve avere un metodo stampaMenu() che visualizza le pizze con ingredienti e prezzo
+e i drink con gradi e prezzo.
+
+4. Configurazione Spring (PizzeriaConfig)
+Definire i Beans per più tipi di Pizza e più tipi di Drink.
+Definire un Bean Menu, che raccoglie le pizze e i drink disponibili.
+
+5. Classe MainPizzeria per il Testing
+Creare il contesto di Spring.
+Recuperare il Bean Menu e stampare il menu della pizzeria.
+
+************* Menu Pizzeria NomePizzeria **************
+----- Pizze -----
+1. nomePizza (ingrediente1, ingrediente2, ...., ingredietnteN) 0.00
+2. nomePizza (ingrediente1, ingrediente2, ...., ingredietnteN) 0.00
+3. nomePizza (ingrediente1, ingrediente2, ...., ingredietnteN) 0.00
+......
+N. nomePizza (ingrediente1, ingrediente2, ...., ingredietnteN) 0.00
+
+----- Drink -----
+1. nomeDrink 0° 0.00
+2. nomeDrink 0° 0.00
+3. nomeDrink 0° 0.00
+........
+N. nomeDrink 0° 0.00
