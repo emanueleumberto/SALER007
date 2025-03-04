@@ -1,0 +1,3 @@
+Refactoring del codice
+organizzando  il progetto con l'inserimento di Runner e Service
+Utilizzano accoppiamento debole sfruttando i concetti di DI e IOC ove possibile
