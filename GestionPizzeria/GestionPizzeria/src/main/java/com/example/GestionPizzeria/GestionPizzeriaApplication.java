@@ -13,10 +13,10 @@ public class GestionPizzeriaApplication {
 
 		SpringApplication.run(GestionPizzeriaApplication.class, args);
 
-		stampaMenu();
+		// stampaMenu();
 	}
 
-	public static void stampaMenu() {
+	/*public static void stampaMenu() {
 		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(PizzeriaConfig.class);
 
 		Menu menu = (Menu) appContext.getBean("creaMenu");
@@ -44,5 +44,5 @@ public class GestionPizzeriaApplication {
 
 		appContext.close();
 	}
-
+*/
 }

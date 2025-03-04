@@ -2,7 +2,8 @@ Refactoring del codice
 organizzando  il progetto con l'inserimento di Runner e Service
 Utilizzano accoppiamento debole sfruttando i concetti di DI e IOC ove possibile
 
-Espandere l’applicazione del menu della pizzeria introducendo nuove entità e migliorando la gestione degli ordini,
+Espandere l’applicazione del menu della pizzeria introducendo nuove entità
+e migliorando la gestione degli ordini,
 utilizzando Spring Beans, Dependency Injection e un Service.
 
 Cliente (Cliente) → Rappresenta un cliente con nome e numero di telefono. Bean gestito da Spring.
@@ -11,7 +12,7 @@ Ordine (Ordine) → Contiene il cliente e le prodotti ordinati, con un numero d�
 Gestore Ordini (OrdineService) → Gestisce la creazione e la visualizzazione degli ordini.
 
 Classe MenuService (Gestione Pizze) Contiene una lista di pizze disponibili. Metodo stampaMenu() per mostrare il menu.
-Classe OrdineService (Gestione Ordini) Registra nuovi ordini. Metodo creaOrdine(Cliente cliente, Proddotti prodotto).
+Classe OrdineService (Gestione Ordini) Registra nuovi ordini. Metodo creaOrdine(Cliente cliente, List<Prodotto> listaProdotti).
                         Metodo stampaOrdini() per mostrare gli ordini effettuati.
 
 Classe PizzeriaRunner

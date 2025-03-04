@@ -5,7 +5,6 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -16,8 +15,7 @@ public class Menu {
     private List<Pizza> listaPizze;
     private List<Drink> listaDrink;
 
-    public Menu(String nome) {
-        this.nome = nome;
+    public Menu() {
         this.listaPizze = new ArrayList<Pizza>();
         this.listaDrink = new ArrayList<Drink>();
     }
