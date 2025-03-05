@@ -54,6 +54,7 @@ public class DBConnection {
         ps.setString(5, u.getEmail());
         ps.executeUpdate();
         System.out.println(u.getFirstname() + " " + u.getLastname() + " salvato nel DB!!");
+        ps.close();
     }
 
     public User findUser(int id) throws SQLException {
@@ -71,6 +72,7 @@ public class DBConnection {
           u = new User(user_id, firstname, lastname, age, city, email);
         }
         return u;
+
     }
 
     public void updateUser(User u) throws SQLException {

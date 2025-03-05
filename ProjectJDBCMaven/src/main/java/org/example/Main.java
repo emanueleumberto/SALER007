@@ -33,6 +33,10 @@ public class Main  {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            // chiudere la connessione
+            // st.close()
+            // conn.close();
         }
     }
 
