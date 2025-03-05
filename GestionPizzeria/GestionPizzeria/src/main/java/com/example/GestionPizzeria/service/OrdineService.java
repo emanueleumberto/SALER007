@@ -33,14 +33,14 @@ public class OrdineService {
             System.out.println("Pizze Ordinate: ");
             o.getListaProdotti().forEach(p -> {
                 if(p instanceof Pizza) {
-                    System.out.println(p.getNome() + " - " + ((Pizza) p).getIngredienti() + " €" + p.getPrezzo());
+                    System.out.println("   - " + p.getNome() + " - " + ((Pizza) p).getIngredienti() + " €" + p.getPrezzo());
 
                 }
             });
             System.out.println("Drink ordinati: ");
             o.getListaProdotti().forEach(p -> {
                 if(p instanceof Drink) {
-                    System.out.println(p.getNome() + " - " + ((Drink) p).getGradi() + "° €" + p.getPrezzo());
+                    System.out.println("   - " + p.getNome() + " - " + ((Drink) p).getGradi() + "° €" + p.getPrezzo());
                 }
             });
             System.out.println("Totale ordine: " + o.getListaProdotti().stream().mapToDouble(Prodotto::getPrezzo).sum());

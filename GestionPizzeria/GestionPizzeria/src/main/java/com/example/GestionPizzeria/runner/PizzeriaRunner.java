@@ -32,13 +32,19 @@ public class PizzeriaRunner implements CommandLineRunner {
         ordineService.creaOrdine(
                 ordineService.getFakeCliente(),
                 List.of(
-                    menuService.getPizzaMargerita(), menuService.getPizzaBoscaiola(), menuService.getDrinkAcqua(), menuService.getDrinkCocaCola()
+                        menuService.getPizzaMargerita(),
+                        menuService.getPizzaBoscaiola(),
+                        menuService.getDrinkAcqua(),
+                        menuService.getDrinkCocaCola()
                 ));
 
         ordineService.creaOrdine(
                 ordineService.getFakeCliente(),
                 List.of(
-                        menuService.getPizzaDiavola(), menuService.getPizzaMargerita(), menuService.getDrinkBeer(), menuService.getDrinkCocaCola()
+                        menuService.getPizzaDiavola(),
+                        menuService.getPizzaMargerita(),
+                        menuService.getDrinkBeer(),
+                        menuService.getDrinkCocaCola()
                 )
         );
 

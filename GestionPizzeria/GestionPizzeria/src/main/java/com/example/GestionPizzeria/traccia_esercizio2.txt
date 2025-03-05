@@ -17,4 +17,4 @@ Classe OrdineService (Gestione Ordini) Registra nuovi ordini. Metodo creaOrdine(
 
 Classe PizzeriaRunner
 Implementa CommandLineRunner per avviare automaticamente l’applicazione.
-Simula la creazione di alcuni ordini e la stampa del menu.
+Stampa del menu, Simula la creazione di alcuni ordini e la stampa di tutti gli ordini effettuati con il calcolo del totale .
