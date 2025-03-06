@@ -14,7 +14,7 @@ public class ProdottiRowMapper implements RowMapper<Prodotto> {
     @Override
     public Prodotto mapRow(ResultSet rs, int rowNum) throws SQLException {
         Menu menu = new Menu();
-        menu.setId(rs.getLong("id_menu"));
+        menu.setId(rs.getLong("menu_id"));
         menu.setNome(rs.getString("nome_menu"));
         if(rs.getString("tipo_prodotto").equals("Pizza")) {
             Pizza pizza = new Pizza();

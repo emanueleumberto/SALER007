@@ -7,6 +7,7 @@ import com.example.GestionePizzeriaJDBC.models.Prodotto;
 import com.example.GestionePizzeriaJDBC.services.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@Order(1)
 public class MenuRunner implements CommandLineRunner {
 
     @Autowired MenuService menuService;
@@ -47,7 +49,7 @@ public class MenuRunner implements CommandLineRunner {
         //Drink cocaCola = (Drink) menuService.leggiProdotto(2);
         //System.out.println(cocaCola);
 
-        menuService.stampaMenu(1);
+        //menuService.stampaMenu(1);
 
     }
 }
