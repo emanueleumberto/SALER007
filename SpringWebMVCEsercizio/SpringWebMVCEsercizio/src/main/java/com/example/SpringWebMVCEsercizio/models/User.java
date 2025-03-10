@@ -1,4 +1,4 @@
-package com.example.SpringWebMVC.model;
+package com.example.SpringWebMVCEsercizio.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,20 +8,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-//@Entity
-//@Table(name = "users")
+@Entity
+@Table(name = "users")
 public class User {
 
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String firstname;
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String lastname;
-    //@Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String password;
 
 }
