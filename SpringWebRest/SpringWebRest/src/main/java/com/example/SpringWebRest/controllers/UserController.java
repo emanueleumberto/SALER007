@@ -43,11 +43,17 @@ public class UserController {
     }
 
     @PutMapping("/{id}/update")
-    public User updatePutUser(@PathVariable Long id, @RequestBody User user) {
-        if(id == user.getId()) {
-            return userService.update(user);
+    public ResponseEntity<?> updatePutUser(@PathVariable Long id, @RequestBody User user) {
+        try {
+            userService.findById(id);
+            if(id == user.getId()) {
+                return new ResponseEntity<User>(userService.update(user), HttpStatus.OK);
+            } else {
+                return new ResponseEntity<String>("Not Found!!!", HttpStatus.NOT_FOUND);
+            }
+        } catch (EntityNotFoundException | NoSuchElementException e ) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
-        return null;
     }
 
     @PatchMapping("/{id}/update")
@@ -68,15 +74,17 @@ public class UserController {
                 ReflectionUtils.setField(field, user, value);
             }
         });
-
         return new ResponseEntity<User>(userService.update(user), HttpStatus.OK);
-
     }
 
     @DeleteMapping("/{id}/delete")
-    public String deleteUser(@PathVariable Long id) {
-        userService.delete(id);
-        return "User deleted!";
+    public ResponseEntity<String> deleteUser(@PathVariable Long id) {
+        try {
+            userService.delete(id);
+            return new ResponseEntity<String>("User deleted!", HttpStatus.OK);
+        } catch (EntityNotFoundException | NoSuchElementException e ) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 
 }
