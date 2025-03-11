@@ -1,0 +1,82 @@
+
+Creazione di un'API REST con Spring Boot e Spring Data JPA
+Utilizzare Spring Boot per configurare il progetto.
+Includere le dipendenze necessarie in Maven
+    Spring Web
+    Spring Data JPA
+    Driver per MySQL
+    Lombok (opzionale)
+    Spring Boot DevTools (opzionale)
+
+Configurare il database nel file application.properties
+
+Creazione dell'entità Product
+L'entità deve contenere i seguenti campi:
+    id (Long, generato automaticamente)
+    name (String, non nullo)
+    description (String)
+    price (BigDecimal, non nullo)
+    createdAt (LocalDateTime, generato automaticamente)
+
+Creare un’interfaccia ProductRepository che estende JpaRepository<Product, Long>.
+
+Implementare la classe ProductService con i seguenti metodi:
+    List<Product> getAllProducts(): restituisce tutti i prodotti.
+    Product getProductById(Long id): restituisce un prodotto tramite ID.
+    Product saveProduct(Product product): salva un nuovo prodotto.
+    Product updatePutProduct(Long id, Product product): aggiorna un prodotto esistente.
+    Product updatePatchProduct(Long id, Product product): aggiorna un prodotto esistente.
+    void deleteProduct(Long id): elimina un prodotto.
+
+Implementare il controller ProductController con i seguenti endpoint:
+    GET /products → restituisce tutti i prodotti.
+    GET /products/{id} → restituisce un prodotto specifico.
+    POST /products → aggiunge un nuovo prodotto.
+    PUT /products/{id} → aggiorna un prodotto.
+    PATCH /products/{id} → aggiorna un prodotto.
+    DELETE /products/{id} → elimina un prodotto.
+
+Usare Postman per testare le API.
+
+
+Extra
+L’applicazione avrà le seguenti entità con relazioni tra loro:
+Utente (User)
+L’utente può effettuare più ordini.
+    id (Long, generato automaticamente)
+    username (String, univoco, obbligatorio)
+    email (String, univoco, obbligatorio)
+    password (String, hashata se si usa Spring Security)
+    createdAt (LocalDateTime, generato automaticamente)
+    Relazione uno-a-molti con Order
+
+Ordine (Order)
+Un ordine appartiene a un utente e un prodotto.
+    id (Long, generato automaticamente)
+    user (User, relazione molti-a-uno)
+    product (Product, relazione uno-a-molti)
+    totalPrice (BigDecimal, calcolato automaticamente)
+    status (Enum: PENDING, SHIPPED, DELIVERED, CANCELLED)
+    createdAt (LocalDateTime, generato automaticamente)
+
+Creazione dei repository
+UserRepository → Estende JpaRepository<User, Long>.
+OrderRepository → Estende JpaRepository<Order, Long>.
+
+Creazione dei servizi
+UserService: gestione utenti.
+OrderService: creazione, aggiornamento e cancellazione ordini con calcolo automatico del totale.
+
+Creazione dei controller REST
+UserController
+    GET /users → Restituisce tutti gli utenti.
+    GET /users/{id} → Restituisce un utente.
+    POST /users → Registra un nuovo utente.
+
+OrderController
+    POST /orders → Crea un ordine per un utente.
+    GET /orders/{id} → Ottiene i dettagli di un ordine.
+    PUT /orders/{id}/cancel → Annulla un ordine.
+    GET /orders/user/{userId} → Restituisce gli ordini di un utente.
+
+Usare Postman per testare le API.
