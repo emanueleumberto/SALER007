@@ -1,6 +1,7 @@
 package com.example.EsercizioGestionProdottiREST.exceptions;
 
 import jakarta.persistence.EntityExistsException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,11 @@ public class MyExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<String> manageDataIntegrityViolationException(DataIntegrityViolationException e) {
         return new ResponseEntity<String>(e.getMessage() + " DataIntegrityViolationException!!!", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<String> manageEntityNotFoundException(EntityNotFoundException e) {
+        return new ResponseEntity<String>(e.getMessage() + " EntityNotFoundException!!!", HttpStatus.BAD_REQUEST);
     }
 
 }
