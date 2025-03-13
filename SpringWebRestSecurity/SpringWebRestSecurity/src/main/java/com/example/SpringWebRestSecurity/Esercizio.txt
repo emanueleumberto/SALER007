@@ -1,0 +1,60 @@
+Realizzare un'API REST per la gestione di una palestra che consenta di:
+
+- Gestire gli utenti (registrazione, autenticazione con JWT, assegnazione ruoli).
+- Gestire gli abbonamenti (creazione, modifica, assegnazione a utenti).
+- Gestire le classi di allenamento con istruttori e orari.
+- Gestire le prenotazioni per i corsi offerti dalla palestra.
+
+📂 gym-management
+  📂 src/main/java/com/example/gymmanagement
+    📂 config → Configurazione
+    📂 controller → API REST per utenti, abbonamenti, prenotazioni
+    📂 dto → Oggetti per la comunicazione API
+    📂 entity → Entità JPA (User, Membership, Booking, GymClass)
+    📂 repository → Interfacce JPA per l’accesso ai dati
+    📂 service → Logica di business
+    📂 security → Configurazione JWT e autenticazione
+
+Utenti e Ruoli
+Gli utenti possono essere CLIENTE, ISTRUTTORE, ADMIN.
+I ruoli sono gestiti con ROLE_CLIENT, ROLE_INSTRUCTOR, ROLE_ADMIN.
+
+Gli utenti possono avere un solo abbonamento attivo.
+Un abbonamento può essere Mensile, Trimestrale, Annuale.
+
+Classi di Allenamento (Gym Classes)
+I Corsi hanno un istruttore assegnato.
+Gli utenti possono prenotarsi alle classi disponibili.
+
+Prenotazioni (Booking)
+Gli utenti possono prenotare una classe di allenamento.
+Un utente non può prenotare due classi sovrapposte.
+
+Sicurezza e Autenticazione con JWT
+Spring Security sarà configurato per:
+✅ Proteggere le API con autenticazione JWT
+✅ Permettere l’accesso a risorse in base al ruolo
+✅ Consentire solo agli ADMIN di gestire abbonamenti e classi
+
+API REST
+🔹 Autenticazione (/auth)
+POST /auth/register → Registrazione utente (ROLE_CLIENT)
+POST /auth/login → Login e ottenimento token JWT
+
+🔹 Gestione Utenti (/users)
+GET /users/{id} → Info utente
+DELETE /users/{id} → Rimozione utente (solo ADMIN)
+PATCH /user/{id} -> Modifica ruolo (solo ADMIN)
+
+🔹 Gestione Abbonamenti (/memberships)
+POST /memberships → Creazione abbonamento (solo ADMIN)
+GET /memberships/{userId} → Info abbonamento utente
+
+🔹 Gestione Classi (/classes)
+POST /classes → Creazione corso (solo ADMIN)
+GET /classes → Lista corsi disponibili
+GET /classes/{id} -> Elenco partecipanti (solo ISTRUTTORE e ADMIN)
+
+🔹 Gestione Prenotazioni (/bookings)
+POST /bookings → Prenota una classe
+DELETE /bookings/{id} → Cancella prenotazione
