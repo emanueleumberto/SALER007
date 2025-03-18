@@ -1,10 +1,12 @@
 package com.example.gym_management.services;
 
 import com.example.gym_management.models.GymClass;
+import com.example.gym_management.models.Membership;
 import com.example.gym_management.payloadDTO.BookingDTO;
 import com.example.gym_management.payloadDTO.GymClassDTO;
 import com.example.gym_management.payloadDTO.ResponseGymClassDTO;
 import com.example.gym_management.repositories.GymClassRepository;
+import com.example.gym_management.repositories.MembershipRepository;
 import com.example.gym_management.security.entity.ERole;
 import com.example.gym_management.security.entity.User;
 import com.example.gym_management.security.exception.MyAPIException;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +27,7 @@ public class GymClassService {
     @Autowired @Qualifier("createGymClass") ObjectProvider<GymClass> gymClassObjectProvider;
     @Autowired GymClassRepository gymClassRepository;
     @Autowired UserRepository userRepository;
+    @Autowired MembershipRepository membershipRepository;
 
     public ResponseGymClassDTO createGymClass(GymClassDTO gymClassDTO) {
 
@@ -89,9 +93,29 @@ public class GymClassService {
                     .filter(c -> c.getStartTime() == bookingDTO.getStartTime())
                     .findFirst()
                     .get();
-        if(gymClass.getNumClientMax() > gymClass.getGymClassClients().size()) {
-            gymClass.getGymClassClients().add(user);
+        Membership membership = membershipRepository.findByUserId(user.getId()).get();
+
+        // Controllo se abbonamento non è scaduto
+        if(membership.getEndMembership().isBefore(LocalDate.now())) {
+            throw new MyAPIException(HttpStatus.BAD_REQUEST, "Membership not active!.");
         }
+
+        // Controllo se abbonamento è attivo
+        if(!membership.isActive()) {
+            throw new MyAPIException(HttpStatus.BAD_REQUEST, "Membership not active!.");
+        }
+
+        // Controllo se ci sono posti disponibili
+        if(gymClass.getNumClientMax() < gymClass.getGymClassClients().size()) {
+            throw new MyAPIException(HttpStatus.BAD_REQUEST, "Gym Class full!.");
+        }
+
+        // Controllo se ci sono già prenotazioni allo stesso orario
+        if(getGymClassBooking(user,gymClass)) {
+            throw new MyAPIException(HttpStatus.BAD_REQUEST, "booking not found");
+        }
+
+        gymClass.getGymClassClients().add(user);
 
         gymClassRepository.save(gymClass);
     }
@@ -105,4 +129,16 @@ public class GymClassService {
                                 .collect(Collectors.toList()));
         gymClassRepository.save(gymClass);
     }
+
+    private boolean getGymClassBooking(User user, GymClass gymClass) {
+        // Metodo che deve controllare se esiste già una prenotazione di un Utente allo stesso orario del corso che si vuole prenotare
+        List<GymClass> classList = gymClassRepository.findAll(); // Leggo tutti i corsi disponibili
+        List<GymClass> bookingUser = classList
+                                        .stream()
+                                        .filter(c -> c.getGymClassClients().contains(user)) // filtro tutti i corsi a cui lo User è iscritto
+                                        .collect(Collectors.toList());
+        // controllo se tra tutti i corsi a cui sono iscritto è presente almeno un corso che ha orario identico a quello a cui mi voglio iscrivere
+        return bookingUser.stream().anyMatch(c -> c.getStartTime().equals(gymClass.getStartTime()));
+    }
+
 }

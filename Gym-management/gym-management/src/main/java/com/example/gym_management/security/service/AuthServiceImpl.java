@@ -9,6 +9,7 @@ import com.example.gym_management.security.entity.User;
 import com.example.gym_management.security.exception.MyAPIException;
 import com.example.gym_management.security.payload.LoginDto;
 import com.example.gym_management.security.payload.RegisterDto;
+import com.example.gym_management.security.payload.UpdateRoleUserDTO;
 import com.example.gym_management.security.repository.RoleRepository;
 import com.example.gym_management.security.repository.UserRepository;
 import com.example.gym_management.security.security.JwtTokenProvider;
@@ -94,7 +95,26 @@ public class AuthServiceImpl implements AuthService {
 
         return "User registered successfully!.";
     }
-    
+
+    @Override
+    public String updateRoleUser(Long userId, UpdateRoleUserDTO updateRoleUserDTO) {
+        User user = userRepository.findById(userId).get();
+        Set<Role> roles = new HashSet<>();
+        if(updateRoleUserDTO.getRoles() != null) {
+            updateRoleUserDTO.getRoles().forEach(role -> {
+                Role userRole = roleRepository.findByRoleName(getRole(role)).get();
+                roles.add(userRole);
+            });
+        } else {
+            Role userRole = roleRepository.findByRoleName(ERole.ROLE_CLIENT).get();
+            roles.add(userRole);
+        }
+
+        user.setRoles(roles);
+        userRepository.save(user);
+        return "Update Role User successfully!.";
+    }
+
     public ERole getRole(String role) {
     	if(role.equals("ADMIN")) return ERole.ROLE_ADMIN;
     	else if(role.equals("INSTRUCTOR")) return ERole.ROLE_INSTRUCTOR;

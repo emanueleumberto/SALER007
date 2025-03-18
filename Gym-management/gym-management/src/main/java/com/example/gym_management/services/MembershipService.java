@@ -68,6 +68,20 @@ public class MembershipService {
 
         Membership m = membershipRepository.findByUserId(userId).get();
 
+        return createResponseMebership(m);
+    }
+
+    public ResponseMembershipDTO activeMembershipUser(Long userId) {
+        Membership m = membershipRepository.findByUserId(userId).get();
+
+        m.setActive(!m.isActive());
+        membershipRepository.save(m);
+
+        return createResponseMebership(m);
+
+    }
+
+    private ResponseMembershipDTO createResponseMebership(Membership m) {
         ResponseMembershipDTO response = new ResponseMembershipDTO();
         response.setId(m.getId());
         response.setType(m.getType());

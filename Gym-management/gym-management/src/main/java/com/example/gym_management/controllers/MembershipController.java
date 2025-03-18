@@ -29,5 +29,11 @@ public class MembershipController {
         return new ResponseEntity<>(membershipService.getMembershipUser(userId), HttpStatus.OK);
     }
 
+    @PatchMapping("/{userId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> activeMembership(@PathVariable Long userId) {
+        return new ResponseEntity<>(membershipService.activeMembershipUser(userId), HttpStatus.OK);
+    }
+
 
 }

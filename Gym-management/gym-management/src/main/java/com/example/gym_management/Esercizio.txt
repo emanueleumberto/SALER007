@@ -42,13 +42,14 @@ API REST
 - POST /auth/login → Login e ottenimento token JWT
 
 🔹 Gestione Utenti (/users)
-GET /users/{id} → Info utente
-DELETE /users/{id} → Rimozione utente (solo ADMIN)
-PATCH /user/{id} -> Modifica ruolo (solo ADMIN)
+- GET /users/{id} → Info utente
+- DELETE /users/{id} → Rimozione utente (solo ADMIN)
+- PATCH /user/{id} -> Modifica ruolo (solo ADMIN)
 
 🔹 Gestione Abbonamenti (/memberships)
 - POST /memberships → Creazione abbonamento (solo ADMIN)
 - GET /memberships/{userId} → Info abbonamento utente
+- PATCH /memberships/{userId} → Attiva o Disattiva un abbonamento
 
 🔹 Gestione Classi (/classes)
 - POST /classes → Creazione corso (solo ADMIN)
