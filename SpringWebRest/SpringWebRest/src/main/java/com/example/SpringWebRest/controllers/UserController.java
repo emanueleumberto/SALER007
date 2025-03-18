@@ -81,7 +81,7 @@ public class UserController {
     public ResponseEntity<String> deleteUser(@PathVariable Long id) {
         try {
             userService.delete(id);
-            return new ResponseEntity<String>("User deleted!", HttpStatus.OK);
+            return new ResponseEntity<String>("User deleted!", HttpStatus.NO_CONTENT);
         } catch (EntityNotFoundException | NoSuchElementException e ) {
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
